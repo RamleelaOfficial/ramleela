@@ -230,6 +230,13 @@ select option{background:#150a08;color:var(--text)}
 .urow b{font-weight:500;color:var(--gold2)}
 .urow span{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 @media(max-width:700px){.urow{grid-template-columns:1fr 1fr;row-gap:4px}}
+.pill{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;letter-spacing:.06em;padding:8px 18px;border-radius:30px;border:1px solid var(--line);color:var(--muted);max-width:100%;text-align:left;line-height:1.5;margin:-30px auto 40px;transition:color .6s,border-color .6s}
+.pill::before{content:'';width:8px;height:8px;border-radius:50%;background:#c9a227;flex:none;animation:pulse2 1.6s infinite}
+.pill.ok{color:#9fd6a8;border-color:rgba(107,179,122,.4)}.pill.ok::before{background:#6bb37a;animation:none}
+.pill.bad{color:#ff9e8e;border-color:rgba(255,143,126,.4)}.pill.bad::before{background:#e0614b;animation:none}
+@keyframes pulse2{50%{opacity:.25}}
+.vbar{position:fixed;left:50%;bottom:24px;transform:translate(-50%,160px);opacity:0;pointer-events:none;z-index:150;background:#1b0e0b;border:1px solid var(--line2);border-radius:18px;padding:14px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:.85rem;max-width:min(94vw,580px);transition:transform .8s var(--ease),opacity .8s}
+.vbar.show{transform:translate(-50%,0);opacity:1;pointer-events:auto}
 .switch{text-align:center;font-size:.85rem;color:var(--muted)}.switch a{color:var(--gold);border-bottom:1px solid transparent;transition:border-color .4s}.switch a:hover{border-color:var(--gold)}
 
 .foot{text-align:center;padding:70px 20px 50px;border-top:1px solid var(--line);background:#090403}
@@ -454,6 +461,7 @@ select option{background:#150a08;color:var(--text)}
   <div class="wrap">
     <div class="center"><span class="kicker">Admin</span><h2>Manage Shows</h2><div class="orn"><i></i><span>❖</span><i></i></div></div>
     <p class="center sub">Add and manage upcoming shows. Only visible to the admin account.</p>
+    <div class="center"><span class="pill" id="dbStatus">Checking database connection…</span></div>
     <form id="settingsForm" class="form" style="max-width:1160px;margin:0 auto 28px">
       <h3>Main “Book Now” Link</h3>
       <p class="muted small">Every “Book Now” button in the header and hero opens this link inside the website. Each show below can also have its own link.</p>
@@ -605,6 +613,11 @@ select option{background:#150a08;color:var(--text)}
   </div>
 </div>
 
+<div class="vbar" id="vbar">
+  <span>Verify your email to unlock the Admin Panel.</span>
+  <button class="btn small" id="resendV" type="button">Resend email</button>
+  <button class="btn small ghost" id="reloadV" type="button">I've verified</button>
+</div>
 <div id="toast" class="toast"></div>
 
 <script type="module">
@@ -612,10 +625,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import {
   getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider,
   signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile,
-  sendEmailVerification, sendPasswordResetEmail, signOut
+  sendEmailVerification, sendPasswordResetEmail, signOut, reload
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
-  getFirestore, collection, addDoc, setDoc, getDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp
+  initializeFirestore, collection, addDoc, setDoc, getDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 /* ====== CONFIG ====== */
@@ -752,7 +765,26 @@ addEventListener("keydown", e => e.key === "Escape" && dismissModals());
 let auth, db, shows = [], user = null;
 const app = initializeApp(firebaseConfig);
 auth = getAuth(app);
-db = getFirestore(app);
+db = initializeFirestore(app, { experimentalAutoDetectLongPolling: true });
+
+/* ---- backend diagnostics: never fail silently ---- */
+const withTimeout = (p, ms = 12000) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(Object.assign(new Error("timeout"), { code: "unavailable" })), ms))]);
+const explain = er => {
+  const c = er?.code || "";
+  if (c === "permission-denied" || /insufficient permissions/i.test(er?.message || ""))
+    return "Blocked by Firestore rules. Publish the latest firestore.rules in Firebase Console → Firestore → Rules, and sign in as the admin with a verified email.";
+  if (c === "unavailable" || c === "deadline-exceeded" || er?.message === "timeout")
+    return "Cannot reach Firestore. In Firebase Console → Build → Firestore Database, click “Create database”, then reload this page.";
+  if (c === "not-found") return "Firestore database not found. Create it in Firebase Console → Firestore Database.";
+  if (c === "failed-precondition") return "Firestore needs setup: " + (er.message || "");
+  return er?.message || "Unknown error";
+};
+let dbOk = false;
+const setDb = (ok, msg) => {
+  dbOk = ok; const p = $("#dbStatus"); if (!p) return;
+  p.className = "pill " + (ok ? "ok" : "bad"); p.textContent = ok ? "Database connected ✔" : msg;
+};
+setTimeout(() => { if (!dbOk && !$("#dbStatus").classList.contains("bad")) setDb(false, explain({ code: "unavailable" })); }, 9000);
 let profileDoc = null, profileComplete = null, signingUp = false;
 async function loadProfile(u) {
   try {
@@ -770,10 +802,11 @@ onAuthStateChanged(auth, async u => {
     if (auth.currentUser && profileComplete === false && !document.querySelector(".modal.open")) openProfile();
   }, 1200);
 });
-onSnapshot(query(collection(db, "shows"), orderBy("date")), snap => {
+onSnapshot(query(collection(db, "shows"), orderBy("date")), { includeMetadataChanges: true }, snap => {
   shows = snap.docs.map(d => ({ id: d.id, ...d.data() }));
   renderAll();
-}, err => { console.error(err); toast("Could not load shows. Check Firestore rules."); renderAll(); });
+  if (!snap.metadata.fromCache) setDb(true);
+}, err => { console.error(err); setDb(false, explain(err)); toast("Could not load shows – " + explain(err)); renderAll(); });
 
 /* main Book Now link, editable by admin (settings/site) */
 let siteBookUrl = "", pendingBook = null;
@@ -799,7 +832,7 @@ function renderAuth() {
   $("#adminLink").classList.toggle("hidden", !admin);
   $("#admin").classList.toggle("hidden", !admin);
   admin ? startUsers() : stopUsers();
-  if (user && user.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase() && !user.emailVerified) toast("Verify your email to unlock the Admin Panel");
+  $("#vbar").classList.toggle("show", !!(user && user.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase() && !user.emailVerified));
   renderAdminList();
 }
 $("#loginBtn").onclick = () => openAuth(false);
@@ -845,9 +878,9 @@ $("#authForm").onsubmit = async e => {
       user = auth.currentUser; renderAuth();
       try {
         const data = { name, email, phone: v.phone, dob: v.dob, provider: "password", createdAt: serverTimestamp(), updatedAt: serverTimestamp() };
-        await setDoc(doc(db, "users", c.user.uid), data);
+        await withTimeout(setDoc(doc(db, "users", c.user.uid), data));
         profileDoc = data; profileComplete = true;
-      } catch (pe) { console.warn(pe); profileComplete = null; toast("Account created, but your profile could not be saved."); }
+      } catch (pe) { console.warn(pe); profileComplete = null; toast("Account created, but profile not saved: " + explain(pe)); }
       signingUp = false;
       sendEmailVerification(c.user).catch(() => {});
       toast("Account created. Verification email sent.");
@@ -862,6 +895,13 @@ $("#forgot").onclick = async e => {
   if (!email) { m.className = "msg err"; m.textContent = "Enter your email above first."; return; }
   try { await sendPasswordResetEmail(auth, email); m.className = "msg"; m.textContent = "Password reset email sent."; }
   catch (er) { m.className = "msg err"; m.textContent = authErr(er); }
+};
+
+$("#resendV").onclick = async () => { try { await sendEmailVerification(auth.currentUser); toast("Verification email sent. Check your inbox and spam."); } catch (er) { toast(authErr(er)); } };
+$("#reloadV").onclick = async () => {
+  const u = auth.currentUser; if (!u) return;
+  try { await reload(u); await u.getIdToken(true); user = u; renderAuth(); toast(u.emailVerified ? "Verified ✔ Admin unlocked" : "Email not verified yet"); }
+  catch (er) { toast(authErr(er)); }
 };
 
 /* ====== Sign-up helpers: validation, password meter, profile, user list ====== */
@@ -904,10 +944,10 @@ $("#profileForm").onsubmit = async e => {
   try {
     const data = { name: u.displayName || profileDoc?.name || "", email: u.email || "", phone: v.phone, dob: v.dob, provider: u.providerData[0]?.providerId || "", updatedAt: serverTimestamp() };
     if (!profileDoc) data.createdAt = serverTimestamp();
-    await setDoc(doc(db, "users", u.uid), data, { merge: true });
+    await withTimeout(setDoc(doc(db, "users", u.uid), data, { merge: true }));
     profileDoc = { ...(profileDoc || {}), ...data }; profileComplete = true;
     closeModals(); toast("Profile saved ✔"); resumeBooking();
-  } catch (er) { console.error(er); m.className = "msg err"; m.textContent = "Could not save: " + er.message; }
+  } catch (er) { console.error(er); m.className = "msg err"; m.textContent = "Could not save: " + explain(er); }
   $("#pfSave").disabled = false;
 };
 
@@ -1049,9 +1089,9 @@ $("#settingsForm").onsubmit = async e => {
   if (!u) { m.className = "msg err"; m.textContent = "Link must start with https://"; return; }
   m.className = "msg"; m.textContent = "Saving…"; $("#sSave").disabled = true;
   try {
-    await setDoc(doc(db, "settings", "site"), { bookingUrl: u, updatedAt: serverTimestamp() }, { merge: true });
+    await withTimeout(setDoc(doc(db, "settings", "site"), { bookingUrl: u, updatedAt: serverTimestamp() }, { merge: true }));
     m.textContent = "Saved ✔"; toast("Booking link updated ✔");
-  } catch (er) { console.error(er); m.className = "msg err"; m.textContent = "Save failed: " + er.message; }
+  } catch (er) { console.error(er); m.className = "msg err"; m.textContent = "Save failed: " + explain(er); }
   $("#sSave").disabled = false;
 };
 const form = $("#showForm");
@@ -1100,10 +1140,10 @@ form.onsubmit = async e => {
   };
   setMsg("Saving…"); $("#saveBtn").disabled = true;
   try {
-    if (id) await setDoc(doc(db, "shows", id), { ...data, createdAt: existing?.createdAt || serverTimestamp() });
-    else await addDoc(collection(db, "shows"), { ...data, createdAt: serverTimestamp() });
+    if (id) await withTimeout(setDoc(doc(db, "shows", id), { ...data, createdAt: existing?.createdAt || serverTimestamp() }));
+    else await withTimeout(addDoc(collection(db, "shows"), { ...data, createdAt: serverTimestamp() }));
     toast(id ? "Show updated ✔" : "Show added ✔"); resetForm();
-  } catch (er) { console.error(er); setMsg("Save failed: " + er.message, true); }
+  } catch (er) { console.error(er); setMsg("Save failed: " + explain(er), true); }
   $("#saveBtn").disabled = false;
 };
 function renderAdminList() {
@@ -1131,8 +1171,8 @@ $("#adminList").addEventListener("click", async e => {
     form.scrollIntoView({ behavior: "smooth", block: "center" });
   }
   if (del && confirm("Delete this show permanently?")) {
-    try { await deleteDoc(doc(db, "shows", del.dataset.del)); toast("Show deleted"); }
-    catch (er) { toast("Delete failed: " + er.message); }
+    try { await withTimeout(deleteDoc(doc(db, "shows", del.dataset.del))); toast("Show deleted"); }
+    catch (er) { toast("Delete failed: " + explain(er)); }
   }
 });
 </script>
