@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Musicoul Classes — The Road to Wankhede 2028</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080c;--panel:#0e1018;--panel2:#141725;--line:rgba(226,184,86,.16);--gold:#e2b856;--gold2:#fff1c1;--ink:#e8e6df;--mute:#8d93a6;--green:#5fd3a0;--red:#ef6a5e;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.65 Manrope,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;line-height:1.05}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 5vw;background:rgba(7,8,12,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav b{font:700 22px 'Cormorant Garamond',serif;letter-spacing:.14em;color:var(--gold2)}
+nav div{display:flex;gap:26px;font-size:13px;color:var(--mute)}
+nav div a:hover{color:var(--gold)}
+.btn{display:inline-block;padding:12px 26px;border-radius:99px;background:linear-gradient(120deg,#b98c2e,var(--gold) 50%,var(--gold2));color:#1a1405;font-weight:800;font-size:14px;border:0;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(226,184,86,.35)}
+.hero{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;overflow:hidden;padding:90px 5vw 70px}
+#sky{position:absolute;inset:0;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 38%,rgba(7,8,12,.15),rgba(7,8,12,.82) 70%),linear-gradient(transparent 70%,var(--bg))}
+.hero>div{position:relative;z-index:2;max-width:1000px}
+.hero h1{font-size:clamp(40px,8vw,104px);letter-spacing:-.01em;animation:rise 1.6s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 em{font-style:italic;font-weight:500;background:linear-gradient(100deg,#b98c2e,var(--gold2),#b98c2e);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+.hero p{max-width:640px;margin:22px auto 0;color:#b7bccb;animation:rise 1.6s .35s cubic-bezier(.2,.7,.2,1) both}
+.cd{display:flex;justify-content:center;gap:clamp(10px,3vw,30px);margin:34px 0 8px;animation:rise 1.6s .6s both}
+.cd div{min-width:76px;padding:12px 8px;border:1px solid var(--line);border-radius:14px;background:rgba(14,16,24,.6);backdrop-filter:blur(8px)}
+.cd b{display:block;font:700 34px 'Cormorant Garamond',serif;color:var(--gold2);font-variant-numeric:tabular-nums}
+.cd span{font-size:11px;color:var(--mute)}
+.hero .btn{margin-top:26px;animation:rise 1.6s .8s both}
+@keyframes rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes shine{to{background-position:200%}}
+section{padding:96px 5vw;max-width:1180px;margin:auto}
+.head{max-width:720px;margin-bottom:44px}
+.head h2{font-size:clamp(34px,5vw,58px)}
+.head p{color:var(--mute);margin-top:12px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s,transform .9s}
+.rv.on{opacity:1;transform:none}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:-40px;position:relative;z-index:3}
+.nums div{background:var(--panel);padding:30px 26px}
+.nums b{font:700 54px/1 'Cormorant Garamond',serif;color:var(--gold2);display:block}
+.nums span{color:var(--mute);font-size:13px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;transition:border-color .4s,transform .4s}
+.card:hover{border-color:rgba(226,184,86,.5);transform:translateY(-3px)}
+.card h3{font-size:26px;margin-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.funnel{display:grid;gap:14px}
+.bar{height:64px;border-radius:12px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;width:0;transition:width 1.8s cubic-bezier(.2,.7,.2,1);overflow:hidden;white-space:nowrap}
+.bar b{font:700 28px 'Cormorant Garamond',serif}
+.on .bar{width:var(--w)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:18px}
+.tabs button{flex:none;padding:10px 18px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--mute);font:600 13px Manrope;cursor:pointer;transition:.3s}
+.tabs button.act{background:var(--gold);color:#1a1405;border-color:var(--gold)}
+.ph{display:grid;gap:22px;grid-template-columns:1fr 1fr}
+.ph .stat{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.ph .stat span{padding:6px 14px;border-radius:99px;background:rgba(226,184,86,.09);border:1px solid var(--line);font-size:12.5px;color:var(--gold2)}
+ul.chk{list-style:none;padding:0;display:grid;gap:10px}
+ul.chk li{padding-left:28px;position:relative;font-size:14px;color:#c6cad6}
+ul.chk li::before{content:"";position:absolute;left:0;top:7px;width:12px;height:12px;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 12px rgba(226,184,86,.5)}
+.fade{animation:swap .6s both}
+@keyframes swap{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.tl{position:relative;padding-left:34px;display:grid;gap:22px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),transparent)}
+.tl>div{position:relative}
+.tl>div::before{content:"";position:absolute;left:-33px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
+.tl small{color:var(--gold);font-weight:700;font-size:12.5px}
+.tl h3{font-size:24px;margin:2px 0}
+.tl p{color:var(--mute);font-size:14px}
+.calc{display:grid;grid-template-columns:5fr 7fr;gap:26px}
+.calc label{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-top:16px}
+.calc label b{color:var(--gold2)}
+input[type=range]{width:100%;accent-color:var(--gold)}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.res div{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:16px}
+.res span{font-size:12px;color:var(--mute);display:block}
+.res b{font:700 28px 'Cormorant Garamond',serif;color:var(--gold2)}
+.pledge{text-align:center;border:1px solid rgba(226,184,86,.4);border-radius:28px;padding:70px 6vw;background:radial-gradient(ellipse at 50% 0,rgba(226,184,86,.14),var(--panel) 70%)}
+.pledge h2{font-size:clamp(34px,5vw,60px)}
+.pledge input{padding:13px 20px;border-radius:99px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:500 14px Manrope;width:min(300px,100%);margin:6px}
+#badge{display:none;margin:30px auto 0;max-width:420px;padding:26px;border-radius:18px;border:1px solid var(--gold);background:var(--bg);animation:rise 1s both}
+#badge.show{display:block}
+.ck label{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;border:1px solid var(--line);border-radius:12px;cursor:pointer;margin-bottom:10px;background:var(--panel);transition:.3s;font-size:14px}.ck label:hover{border-color:rgba(226,184,86,.5)}.ck input{accent-color:var(--gold);margin-top:5px}.ck label:has(input:checked){opacity:.55}.ck label:has(input:checked) span{text-decoration:line-through}.note{font-size:13px;color:var(--mute);border-left:2px solid var(--gold);padding-left:14px;margin-top:26px}
+footer{text-align:center;padding:50px 5vw;color:var(--mute);font-size:13px;border-top:1px solid var(--line)}
+@media(max-width:820px){nav div{display:none}.ph,.calc{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.bar{width:var(--w)}}
+</style>
+</head>
+<body>
+<nav><b>MUSICOUL</b><div><a href="#funnel">Mission</a><a href="#roadmap">Roadmap</a><a href="#playbook">Playbook</a><a href="#first90">First 90 days</a><a href="#wankhede">Wankhede plan</a><a href="#calc">Calculator</a></div><a class="btn" href="#pledge" style="padding:9px 20px">Take the pledge</a></nav>
+
+<header class="hero">
+<canvas id="sky"></canvas>
+<div>
+<h1>10,000 students.<br><em>5,000 on the Wankhede field.</em></h1>
+<p>Founded by Chandrashekhar Kolhe on 21 January 2026. Exactly two years later, our target is 5,000+ Musicoul students performing together at Wankhede Stadium. A bold goal, built one honest step at a time.</p>
+<div class="cd" aria-label="Countdown to 21 January 2028"><div><b id="d">0</b><span>days</span></div><div><b id="h">0</b><span>hours</span></div><div><b id="m">0</b><span>minutes</span></div><div><b id="s">0</b><span>seconds</span></div></div>
+<a class="btn" href="#roadmap">See how we get there</a><p style="font-size:12.5px;color:var(--mute);margin-top:18px">A vision in development: venue, date, permissions and guest participation are subject to written confirmation.</p>
+</div>
+</header>
+
+<section style="padding-top:0">
+<div class="nums rv">
+<div><b data-n="10000">0</b><span>students enrolled nationwide</span></div>
+<div><b data-n="5000">0</b><span>performers on stage at Wankhede</span></div>
+<div><b data-n="36">0</b><span>Maharashtra districts covered</span></div>
+<div><b data-n="28">0</b><span>state capital hubs</span></div>
+</div>
+</section>
+
+<section id="funnel">
+<div class="head rv"><h2>Ten thousand learn. Five thousand perform.</h2><p>10,000+ is our enrolment goal. 5,000+ is a separate target: the students who travel to Mumbai and take part. Selection is fair and published in advance, so participation is earned, never assumed from enrolment alone.</p></div>
+<div class="funnel rv">
+<div class="bar" style="--w:100%;background:#2a2f44"><span>Enrolled across India</span><b>10,000+</b></div>
+<div class="bar" style="--w:75%;background:linear-gradient(90deg,#7a5c1c,#b98c2e)"><span>Interested and audition-ready (planning figure)</span><b>7,500</b></div>
+<div class="bar" style="--w:50%;background:linear-gradient(90deg,#d6a63e,var(--gold2));color:#1a1405"><span>Wankhede participation target</span><b>5,000+</b></div>
+</div>
+<p class="note rv">Planning assumption: 5,000 is at least half of 10,000. Actual numbers depend on student interest, age-appropriate supervision, travel, rehearsals, safety and the venue’s approved capacity. We will resize the plan honestly if they differ.</p>
+<div class="grid rv" style="margin-top:30px">
+<div class="card"><h3>Swara & pitch</h3><p>Pitch accuracy scored on a shared rubric, the same one for every city.</p></div>
+<div class="card"><h3>Laya & ensemble timing</h3><p>Holding the beat with a click track, the skill that makes 5,000 sound like one.</p></div>
+<div class="card"><h3>Stage presence</h3><p>Bhajani Mandals, festival slots and Ramleela tours give every student live experience before the big night.</p></div>
+</div>
+</section>
+
+<section id="roadmap">
+<div class="head rv"><h2>The 24-month roadmap</h2><p>Six milestones, each one unlocking the next. Tap a date to see what must be delivered.</p></div>
+<div class="tabs" id="tabs"></div>
+<div class="card ph" id="phase"></div>
+</section>
+
+<section id="playbook">
+<div class="head rv"><h2>The playbook: how every piece gets done</h2><p>Six workstreams run in parallel. Give each one a single accountable lead and review progress with evidence, not optimism.</p></div>
+<div class="grid" id="pb"></div>
+</section>
+
+<section id="first90">
+<div class="head rv"><h2>The first 90 days: start here</h2><p>Tick items off as you finish them. Your progress is saved in this browser.</p></div>
+<div class="ck rv" id="ck"></div>
+<div class="card rv" style="margin-top:18px"><div style="display:flex;justify-content:space-between;font-size:13px;color:var(--mute)"><span>90-day setup progress</span><b id="ckn" style="color:var(--gold2)">0 / 8 complete</b></div><div style="height:12px;background:var(--panel2);border-radius:9px;margin-top:10px;overflow:hidden"><div id="ckb" style="height:100%;width:0;background:linear-gradient(90deg,#b98c2e,var(--gold2));transition:width .6s"></div></div></div>
+</section>
+
+<section id="wankhede">
+<div class="head rv"><h2>Wankhede action plan</h2><p>A 5,000-participant event is a major live-production and public-safety project. Begin with the venue owner and qualified professionals, and never assume access, capacity, technical specifications or security arrangements.</p></div>
+<div class="grid rv" id="ws" style="margin-bottom:46px"></div>
+<div class="tl rv" id="tl"></div>
+<p class="note rv">Please do not publish invented stadium specifications, security procedures, turf-loading figures, VIP access claims or guaranteed guest attendance. The venue and competent authorities must verify and approve every technical and safety decision.</p>
+</section>
+
+<section id="calc">
+<div class="head rv"><h2>Franchise network calculator</h2><p>Model how branches, students and fees add up to the 10,000 target, and what each certified teacher earns.</p></div>
+<p class="note" style="margin:0 0 20px">This is a scenario tool, not a revenue forecast. It subtracts branch costs from gross fees and splits the rest. It leaves out taxes, central overhead, marketing, payment fees, refunds and scholarships. Use real accounts, and prove each branch’s economics before opening the next.</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px" id="presets"></div>
+<div class="calc">
+<div class="card" id="ctl"></div>
+<div>
+<div class="res" id="res"></div>
+<div class="card" style="margin-top:14px"><span style="font-size:12px;color:var(--mute)">Progress toward 10,000 students</span><div style="height:12px;background:var(--panel2);border-radius:9px;margin-top:8px;overflow:hidden"><div id="prog" style="height:100%;width:0;background:linear-gradient(90deg,#b98c2e,var(--gold2));transition:width .8s"></div></div></div>
+</div>
+</div>
+</section>
+
+<section id="pledge">
+<div class="pledge rv">
+<h2>Help us earn the right to stand on that stage.</h2>
+<p style="max-width:560px;margin:16px auto 28px;color:#b7bccb">This is not a promise that the event is already secured. It is a commitment to teach with excellence, build trust and prepare responsibly, together.</p>
+<input id="nm" placeholder="Your name or branch code" aria-label="Your name or branch code"><button class="btn" id="pl">Join the mission</button><p style="font-size:12px;color:var(--mute);margin-top:14px">Your entry shows in this browser only. It is not sent to Musicoul.</p>
+<div id="badge"><small style="color:var(--gold)">Musicoul mission member</small><h3 id="bn" style="font-size:34px;margin:6px 0"></h3><p style="color:var(--mute);font-size:13px">Committed to the Wankhede mission, 2028</p></div>
+</div>
+</section>
+
+<footer>Musicoul Classes · Founded by Chandrashekhar Kolhe · 21 January 2026<br>Target: 10,000+ enrolled, 5,000+ at Wankhede Stadium, 21 January 2028<br>The venue, date, capacity, guest attendance and all permissions remain subject to written confirmation by the relevant authorities.</footer>
+
+<script>
+/* ---------- Wankhede hero ---------- */
+const cv=document.getElementById('sky'),x=cv.getContext('2d');let W,H,mx=0,crowd=[],perf=[],sparks=[];
+function size(){const r=devicePixelRatio||1;W=cv.clientWidth;H=cv.clientHeight;cv.width=W*r;cv.height=H*r;x.setTransform(r,0,0,r,0,0);build()}
+function build(){crowd=[];perf=[];const cx=W/2,cy=H*.74;
+for(let ring=0;ring<7;ring++){const rx=W*(.3+ring*.045),ry=H*(.1+ring*.022),n=70+ring*22;
+for(let i=0;i<n;i++){const a=i/n*6.283;crowd.push({x:cx+Math.cos(a)*rx,y:cy+Math.sin(a)*ry,p:Math.random()*9,r:1+ring*.18})}}
+for(let i=0;i<260;i++){const a=Math.random()*6.283,d=Math.sqrt(Math.random());perf.push({x:cx+Math.cos(a)*d*W*.24,y:cy+Math.sin(a)*d*H*.075,p:Math.random()*6})}
+sparks=Array.from({length:50},()=>({x:Math.random()*W,y:Math.random()*H,v:.2+Math.random()*.5,r:Math.random()*1.5+.4}))}
+addEventListener('resize',size);addEventListener('pointermove',e=>mx=(e.clientX/innerWidth-.5));
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;let t=0;
+function draw(){t+=reduce?0:.016;x.clearRect(0,0,W,H);const cx=W/2+mx*-24,cy=H*.74;
+const sky=x.createRadialGradient(cx,cy,0,cx,cy,W*.7);sky.addColorStop(0,'rgba(226,184,86,.22)');sky.addColorStop(.5,'rgba(60,40,90,.12)');sky.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=sky;x.fillRect(0,0,W,H);
+/* floodlight towers + sweeping beams */
+[[.12,.30],[.88,.30],[.2,.5],[.8,.5]].forEach(([fx,fy],i)=>{const px=W*fx+mx*-14,py=H*fy;const sw=Math.sin(t*.6+i*1.7)*W*.07;
+const g=x.createLinearGradient(px,py,cx+sw,cy);g.addColorStop(0,'rgba(255,241,193,.30)');g.addColorStop(1,'rgba(255,241,193,0)');
+x.fillStyle=g;x.beginPath();x.moveTo(px-5,py);x.lineTo(px+5,py);x.lineTo(cx+sw+W*.12,cy);x.lineTo(cx+sw-W*.12,cy);x.fill();
+x.fillStyle='#fff1c1';x.shadowColor='#e2b856';x.shadowBlur=24;x.beginPath();x.arc(px,py,4,0,6.283);x.fill();x.shadowBlur=0;
+x.fillStyle='rgba(255,255,255,.07)';x.fillRect(px-1,py,2,H-py)});
+/* stadium bowl rings */
+for(let ring=6;ring>=0;ring--){x.beginPath();x.ellipse(cx,cy,W*(.3+ring*.045),H*(.1+ring*.022),0,0,6.283);x.strokeStyle=`rgba(226,184,86,${.05+ring*.012})`;x.lineWidth=1;x.stroke()}
+/* pitch glow */
+const pg=x.createRadialGradient(cx,cy,0,cx,cy,W*.26);pg.addColorStop(0,'rgba(95,211,160,.20)');pg.addColorStop(1,'rgba(95,211,160,0)');x.fillStyle=pg;x.beginPath();x.ellipse(cx,cy,W*.26,H*.085,0,0,6.283);x.fill();
+/* crowd phone-lights twinkle */
+crowd.forEach(c=>{const a=.25+.75*Math.max(0,Math.sin(t*2+c.p));x.fillStyle=`rgba(255,236,170,${a*.7})`;x.fillRect(c.x+mx*-10,c.y,c.r,c.r)});
+/* performers: a wave of gold sweeping across the field */
+perf.forEach(p=>{const w=Math.sin(t*1.6-p.x*.012+p.p*.2);x.fillStyle=`rgba(226,184,86,${.45+.5*w})`;x.beginPath();x.arc(p.x+mx*-10,p.y-w*2.5,1.8,0,6.283);x.fill()});
+/* rising sparks */
+sparks.forEach(s=>{s.y-=s.v;if(s.y<0)s.y=H;x.fillStyle='rgba(255,241,193,.45)';x.beginPath();x.arc(s.x,s.y,s.r,0,6.283);x.fill()});
+requestAnimationFrame(draw)}
+size();draw();
+
+/* ---------- countdown ---------- */
+const target=new Date('2028-01-21T00:00:00+05:30');
+function tick(){let d=Math.max(0,target-Date.now());const v=[Math.floor(d/864e5),Math.floor(d/36e5)%24,Math.floor(d/6e4)%60,Math.floor(d/1e3)%60];['d','h','m','s'].forEach((k,i)=>document.getElementById(k).textContent=String(v[i]).padStart(k=='d'?1:2,'0'))}
+tick();setInterval(tick,1000);
+
+/* ---------- reveal + counters ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('on');
+e.target.querySelectorAll('[data-n]').forEach(el=>{const n=+el.dataset.n,s=performance.now();(function f(now){const p=Math.min(1,(now-s)/1800);el.textContent=Math.round(n*(1-Math.pow(1-p,3))).toLocaleString('en-IN')+(p==1&&n>=5000?'+':'');if(p<1)requestAnimationFrame(f)})(s)});io.unobserve(e.target)}),{threshold:.2});
+function watch(){document.querySelectorAll('.rv').forEach(el=>io.observe(el))}
+
+/* ---------- roadmap ---------- */
+const P=[
+['Nov–Dec 2026','Build the foundation','One reliable operating model',['Audit current operations','90-day plan','Core team named'],['Form a founder-led steering group and appoint a project director with clear authority.','Audit current students, teachers, revenue, costs, attendance, retention and teaching capacity.','Standardise curriculum, teacher onboarding, student support, safeguarding and quality checks.','Set up a simple CRM and weekly dashboard: leads, trials, enrolments, attendance, renewals, referrals.','Prepare a 24-month budget, cash-flow forecast and risk register.','Write the Wankhede concept note and send an official venue enquiry. Treat dates and costs as unconfirmed until answered in writing.']],
+['Jan–Mar 2027','Prove the Pune model','Repeatable city-level growth',['Pilot funnel','Teacher training','Student experience'],['Focus on a few Pune clusters. Improve teaching quality and retention before expanding fast.','Run weekly open classes, school and community introductions, referral drives and student showcases.','Measure lead-to-trial, trial-to-enrolment, monthly retention, attendance and satisfaction.','Train and assess teachers. Appoint branch coordinators only once pilot economics and quality are stable.','Share student stories with written consent and keep a steady content calendar.','Review the pilot monthly and document what works before copying it elsewhere.']],
+['Apr–Jun 2027','Maharashtra expansion','Expand district by district',['District launch playbook','Local teacher pipeline','Regional showcases'],['Pick districts by demand, teacher availability, travel access and local economics, not map coverage alone.','Recruit and train local teachers with background and reference checks suited to the role.','Start in partner venues or shared spaces before signing long leases.','Hold regional workshops and small showcases to build student confidence and community trust.','Name regional rehearsal leaders and standardise arrangements and learning resources.','Approve each new location only after a readiness review and a healthy enrolment pipeline.']],
+['Jul–Sep 2027','National network and repertoire','Reach without losing quality',['City partners','National repertoire','Feasibility review'],['Expand to selected cities where qualified teachers and local partners are ready.','Build a consent-based student database: age group, city, voice or instrument, level and emergency contacts.','Publish the proposed repertoire with practice tracks and learning guides.','Start online ensemble rehearsals and regional practice groups with attendance and progress records.','Appoint a show producer and begin vendor discovery: stage, audio, lighting, transport, medical, insurance.','Hold a formal feasibility review: venue availability, permissions, budget, safety and sponsor pipeline.']],
+['Oct–Dec 2027','Qualify, rehearse and confirm','Turn interest into a safe participant plan',['5,000+ pipeline','Written approvals','Rehearsal readiness'],['Invite expressions of interest and publish eligibility, selection, attendance and withdrawal rules.','Assess readiness with a common rubric and regional auditions, with a fair path for different abilities.','Confirm venue, date, capacity, contract, permissions, insurance and production plan in writing before calling them secured.','Collect parent or guardian consent for minors and plan supervised groups, travel, stay and welfare.','Complete the full budget, sponsor commitments, vendor contracts and refund policy.','Run sectional and regional rehearsals plus a technical rehearsal approved by venue professionals.']],
+['Jan 2028','Deliver the Wankhede celebration','A safe, memorable, student-first event',['Final sign-off','Clear event command','Impact report'],['Hold a final go/no-go review with venue management, authorities, producer, safety leads and Musicoul leadership.','Verify manifests, guardian contacts, transport, accommodation, accessibility, meals and medical support.','Use the approved schedule, access controls, stage management, crowd plan and emergency procedures.','Run sound checks and rehearsals under qualified production professionals.','Capture media only with participant permission and a clear privacy policy.','Afterwards, reconcile finances, thank students and partners, publish an impact report and record lessons learned.']]];
+let cur=0;const tabs=document.getElementById('tabs'),ph=document.getElementById('phase');
+function showPhase(i){cur=i;tabs.innerHTML=P.map((p,j)=>`<button class="${j==i?'act':''}" onclick="showPhase(${j})">${p[0]}</button>`).join('');const p=P[i];
+ph.innerHTML=`<div class="fade"><h3 style="font-size:34px">${p[1]}</h3><div class="stat"><span>${p[2]}</span>${p[3].map(m=>`<span>${m}</span>`).join('')}</div><p class="note" style="margin-top:16px">Gate review: do not start the next stage until this one has an owner, a budget, measurable evidence and written risks.</p></div><ul class="chk fade">${p[4].map(d=>`<li>${d}</li>`).join('')}</ul>`}
+showPhase(0);
+
+/* ---------- playbook ---------- */
+const B=[
+['Leadership and governance','Decide fast, record everything','Founder-led steering group · Project director with clear authority · Written decision log · Weekly review · Budget approvals and a risk register'],
+['Teaching quality','The product is the lesson','Teacher recruitment, auditions and training · Lesson standards · Student feedback and attendance · Regular quality audits'],
+['Students and retention','Grow by earning trust','City campaigns and free intro classes · Referrals and school or community partners · Transparent fees · Retention calls'],
+['Digital platform and data','Know where every student is','Reliable website and CRM · Consent-based records · Payment reconciliation · Attendance and progress tracking · Role-based access'],
+['Finance, legal and partners','Protect the mission','Monthly cash-flow forecast · Audited collections · Contracts and insurance · Child-safeguarding policy · Sponsor proposals · Vendor due diligence'],
+['Curriculum and repertoire','One syllabus, every city','Graded levels · Early stadium repertoire · Practice tracks for every part · Common audition rubric']];
+document.getElementById('pb').innerHTML=B.map(b=>`<div class="card rv"><h3>${b[0]}</h3><p style="color:var(--gold2);font-size:14px;margin-bottom:12px">${b[1]}</p><ul class="chk">${b[2].split(' · ').map(s=>`<li>${s}</li>`).join('')}</ul></div>`).join('');
+
+/* ---------- stadium timeline ---------- */
+const T=[
+['Nov–Dec 2026','Concept note and first venue enquiry','Write a short concept note: purpose, proposed date, participant numbers and safeguarding approach. Send an official enquiry to venue management and ask for availability and terms in writing. Treat everything as unconfirmed until you have it.'],
+['Jan–Mar 2027','Appoint professionals','Hire an experienced show producer, music director and safety consultant, ideally people who have run large ground or stadium events. Let them advise on feasibility, budget and a realistic participant count.'],
+['Apr–Sep 2027','Build, prove, then decide','Develop repertoire and practice tracks, run regional showcases and test rehearsals, and compare real enrolment and readiness with the 5,000 target. End with a formal feasibility review of venue, permits, budget, sponsors and safety.'],
+['Oct–Dec 2027','Confirm in writing','Sign the venue contract, insurance and vendor agreements. Collect parent or guardian consent. Publish eligibility, selection, withdrawal and refund rules. Call the date secured only after written confirmation.'],
+['Dec 2027–Jan 2028','Final rehearsals and readiness','Run sectional, regional and a full technical rehearsal approved by venue professionals. Verify manifests, transport, accommodation, accessibility, meals and medical support. Hold the go/no-go review with venue, authorities and producer.'],
+['21 January 2028','Perform and report','Follow the approved event-day schedule, access controls and emergency plan. Capture media only with permission. Afterwards, reconcile finances, thank everyone and publish an impact report.']];
+document.getElementById('tl').innerHTML=T.map(t=>`<div><small>${t[0]}</small><h3>${t[1]}</h3><p>${t[2]}</p></div>`).join('');
+const WK=[['Venue and permissions','Approach the Mumbai Cricket Association and venue management through official channels. Submit the concept, date, participant count, stage footprint, schedule, insurance and production plan. Get availability, terms and permitted use in writing.'],['Music and production','Appoint a show producer, music director, stage manager and technical vendor. Develop repertoire, rehearsal tracks, stage plots, sound and lighting plans, then run venue-approved technical surveys and sound checks.'],['Student welfare','For minors, require guardian consent, verified accompanying adults, clear safeguarding rules, accessible facilities, water, rest areas, medical support and a reunification process. Name a welfare lead for every group.'],['Travel and stay','Map participants by city and age group. Use vetted transport, confirmed manifests, supervised boarding and arrival, checked accommodation, meal plans and emergency contacts. Publish costs and cancellation terms.'],['Crowd and event safety','Work with venue management, licensed security, local authorities and qualified safety consultants on capacity, entry and exit, emergency routes, fire safety, medical response, weather plans and incident command.'],['Guests and protocol','Send formal invitations only once the concept and approvals are credible. Any dignitary or Prime Minister attendance remains an aspiration until formally confirmed. Protocol and protection are set by the relevant authorities.']];
+document.getElementById('ws').innerHTML=WK.map(w=>`<div class="card"><h3>${w[0]}</h3><p style="color:#c6cad6;font-size:14px">${w[1]}</p></div>`).join('');
+
+/* ---------- calculator ---------- */
+const F=[['br','Branches',1,300,5],['st','Students per branch',5,300,20],['fe','Monthly fee per student (₹)',500,10000,2000,250],['rt','Rent per branch per month (₹)',0,100000,15000,2500],['sp','Teacher share (%)',50,90,70,5]];
+document.getElementById('ctl').innerHTML=F.map(f=>`<label>${f[1]}<b id="v${f[0]}"></b></label><input type="range" id="${f[0]}" min="${f[2]}" max="${f[3]}" step="${f[5]||1}" value="${f[4]}">`).join('');
+const PR=[['Pune today',5,20,2000,15000],['Pune Metro',15,35,2250,18000],['Mumbai hubs',20,60,3000,30000],['36 districts',36,75,2500,20000],['28 capitals',28,150,3000,35000],['10,000 target',200,50,2500,20000]];
+document.getElementById('presets').innerHTML=PR.map((p,i)=>`<button class="btn" style="padding:8px 16px;font-size:13px;background:var(--panel2);color:var(--ink);border:1px solid var(--line)" onclick="pre(${i})">${p[0]}</button>`).join('');
+const $=id=>document.getElementById(id);
+function pre(i){const p=PR[i];['br','st','fe','rt'].forEach((k,j)=>$(k).value=p[j+1]);$('sp').value=70;calc()}
+const fm=v=>v>=1e7?'₹'+(v/1e7).toFixed(2)+' Cr':v>=1e5?'₹'+(v/1e5).toFixed(2)+' L':'₹'+Math.round(v).toLocaleString('en-IN');
+function calc(){const b=+$('br').value,s=+$('st').value,f=+$('fe').value,r=+$('rt').value,sp=+$('sp').value;
+F.forEach(q=>$('v'+q[0]).textContent=q[0]=='sp'?sp+' / '+(100-sp):(q[0]=='fe'||q[0]=='rt'?'₹'+(+$(q[0]).value).toLocaleString('en-IN'):$(q[0]).value));
+const n=b*s,g=n*f,rent=b*r,net=Math.max(0,g-rent),tp=net*sp/100,hq=net-tp;
+$('res').innerHTML=[['Students',n.toLocaleString('en-IN')],['Gross / month',fm(g)],['Rent',fm(rent)],['Net pool',fm(net)],['Teachers get',fm(tp)],['HQ royalty',fm(hq)]].map(a=>`<div><span>${a[0]}</span><b>${a[1]}</b></div>`).join('');
+$('prog').style.width=Math.min(100,n/100)+'%'}
+['br','st','fe','rt','sp'].forEach(k=>$(k).addEventListener('input',calc));calc();
+
+/* ---------- pledge ---------- */
+$('pl').onclick=()=>{const v=$('nm').value.trim();if(!v)return;$('bn').textContent=v;$('badge').classList.add('show')};
+const CK=['Days 1–15: Appoint a project lead. Define the mission brief, target cities, decision rights and a weekly dashboard.','Days 1–30: Audit students, teachers, fees, attendance, retention, capacity and operating costs.','Days 15–30: Build a standard branch playbook, teacher onboarding and a learning-quality rubric.','Days 15–45: Set up a CRM, lead-to-enrolment funnel, parent consent records and payment reconciliation.','Days 30–60: Run one repeatable city campaign. Measure trial-to-enrolment conversion and retention.','Days 30–60: Draft the Wankhede concept note and request an official venue discussion. Make no booking claim until it is confirmed in writing.','Days 45–75: Form a student performance committee. Define repertoire, age groups and rehearsal format.','Days 60–90: Build a 12-month budget, sponsorship deck, risk register and go/no-go criteria for each expansion.'];
+let sv={};try{sv=JSON.parse(localStorage.getItem('mc90')||'{}')}catch(e){}
+$('ck').innerHTML=CK.map((c,i)=>`<label><input type="checkbox" data-i="${i}" ${sv[i]?'checked':''}><span>${c}</span></label>`).join('');
+function ck(){const bx=[...document.querySelectorAll('#ck input')];const st={};bx.forEach(b=>st[b.dataset.i]=b.checked);try{localStorage.setItem('mc90',JSON.stringify(st))}catch(e){}const n=bx.filter(b=>b.checked).length;$('ckn').textContent=n+' / '+bx.length+' complete';$('ckb').style.width=(n/bx.length*100)+'%'}
+document.querySelectorAll('#ck input').forEach(b=>b.addEventListener('change',ck));ck();
+watch();
+</script>
+</body>
+</html>
