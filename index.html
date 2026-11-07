@@ -167,6 +167,58 @@ details.g li b{color:var(--gold2)}
 html:not([lang=en]) details.g summary{font-family:'Tiro Devanagari Hindi',serif;font-weight:400}
 html[lang=mr] details.g summary{font-family:'Tiro Devanagari Marathi',serif}
 @media(max-width:600px){details.g summary{font-size:21px;padding:16px 18px}details.g ol{padding:4px 18px 20px}}
+
+.jr{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;position:relative;margin:26px 0 10px;text-align:center}
+.jr::before{content:"";position:absolute;left:10%;right:10%;top:34px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.45}
+.jr div{position:relative}
+.jr i{display:grid;place-items:center;width:68px;height:68px;margin:0 auto 10px;border-radius:50%;font-style:normal;font-size:28px;background:radial-gradient(circle at 30% 25%,#1c2032,var(--panel));border:1px solid var(--gold);box-shadow:0 0 0 6px rgba(226,184,86,.06),0 10px 30px -10px rgba(226,184,86,.5);animation:glow 5s ease-in-out infinite}
+.jr div:nth-child(2) i{animation-delay:.8s}.jr div:nth-child(3) i{animation-delay:1.6s}.jr div:nth-child(4) i{animation-delay:2.4s}.jr div:nth-child(5) i{animation-delay:3.2s}
+.jr b{font:700 20px 'Cormorant Garamond',serif;display:block}
+@keyframes glow{50%{box-shadow:0 0 0 11px rgba(226,184,86,.12),0 10px 40px -8px rgba(226,184,86,.85)}}
+.vz{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.vz svg,.fd svg{width:100%;height:auto;display:block}
+.vz text,.fd text{fill:var(--mute);font:11px Manrope,Mukta,sans-serif}
+.vz .cap,.fd .cap{font-size:12.5px;color:var(--mute);margin-top:10px}
+.dr{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.6s cubic-bezier(.2,.7,.2,1)}
+.on .dr{stroke-dashoffset:0}
+.ar{opacity:0;transition:opacity 2s .8s}.on .ar{opacity:1}
+.ln{stroke-dasharray:3 6;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-18}}
+.pl{transform-box:fill-box;transform-origin:center;animation:pl 2.6s ease-out infinite}
+@keyframes pl{0%{transform:scale(1);opacity:.7}100%{transform:scale(3.4);opacity:0}}
+.fd circle.d{animation:tw 3.2s ease-in-out infinite}
+@keyframes tw{50%{opacity:.3}}
+.lgd{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:12px;font-size:12px;color:var(--mute)}
+.lgd span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);margin-right:6px}
+.eq{display:flex;gap:4px;align-items:flex-end;justify-content:center;height:72px;overflow:hidden;margin:20px 0 0}
+.eq span{width:3px;border-radius:3px;height:var(--h);background:linear-gradient(var(--gold2),var(--gold) 60%,transparent);animation:eq 1.3s ease-in-out infinite alternate;animation-delay:var(--d)}
+@keyframes eq{to{height:14%}}
+@media(max-width:820px){.vz{grid-template-columns:1fr}}
+@media(max-width:600px){.jr{gap:2px}.jr i{width:52px;height:52px;font-size:22px}.jr::before{top:26px}.jr b{font-size:15px}}
+
+.fdg{display:grid;grid-template-columns:minmax(0,430px) 1fr;gap:28px;align-items:center}
+.fmo{font:700 clamp(40px,7vw,64px)/1 'Cormorant Garamond',serif;color:var(--gold2)}
+.fph{color:var(--gold);font-weight:600;margin:6px 0 16px;min-height:1.7em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.chips button{padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--mute);font:600 12.5px Manrope,Mukta,sans-serif;cursor:pointer;min-height:38px;transition:.3s}
+.chips button.on{background:var(--gold);color:#1a1405;border-color:var(--gold)}
+.mk{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.2);transition:opacity .6s,transform .6s}
+.mk.on{opacity:1;transform:none}
+.mk.nw{animation:pop 1.6s ease-out}
+@keyframes pop{0%{transform:scale(3.2);filter:drop-shadow(0 0 8px #fff1c1)}100%{transform:none}}
+@media(max-width:820px){.fdg{grid-template-columns:1fr}}
+
+.fz{position:relative;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#10141f,#090b11);border:1px solid var(--line)}
+.fz svg{touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.fz.manual svg{touch-action:none}.fz.drag svg{cursor:grabbing}
+.fz polygon,.fz polyline,.fz line{vector-effect:non-scaling-stroke}
+.fz text{font:11px Manrope,Mukta,sans-serif;fill:#d6d9e4;pointer-events:none;paint-order:stroke;stroke:#090b11;stroke-width:var(--sw,3px);stroke-linejoin:round}
+.fz .lb,.fz .sl{transition:opacity .4s}.fz .sea{fill:rgba(127,178,255,.55);font-style:italic;stroke:none}.fz .mk{pointer-events:auto}
+.zc{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:6px}
+.zc button{min-width:40px;min-height:40px;border-radius:10px;border:1px solid var(--line);background:rgba(7,8,12,.85);color:var(--gold2);font:700 19px Manrope,sans-serif;cursor:pointer;transition:.3s}
+.zc button#za{font-size:11.5px;padding:0 8px}.zc button.on{background:var(--gold);color:#1a1405}
+.sb{position:absolute;left:12px;bottom:10px;display:flex;align-items:center;gap:8px;font-size:11px;color:var(--mute)}
+.sb i{display:block;height:6px;border:1px solid var(--gold);border-top:0}
 </style>
 </head>
 <body>
@@ -199,6 +251,7 @@ html[lang=mr] details.g summary{font-family:'Tiro Devanagari Marathi',serif}
 <div class="bar" style="--w:50%;background:linear-gradient(90deg,#d6a63e,var(--gold2));color:#1a1405"><span>Wankhede participation target</span><b>5,000+</b></div>
 </div>
 <p class="note rv">Planning assumption: 5,000 is at least half of 10,000. Actual numbers depend on student interest, age-appropriate supervision, travel, rehearsals, safety and the venue’s approved capacity. We will resize the plan honestly if they differ.</p>
+<div class="rv" id="jrw"></div>
 <div class="grid rv" style="margin-top:30px">
 <div class="card"><h3>Swara & pitch</h3><p>Pitch accuracy scored on a shared rubric, the same one for every city.</p></div>
 <div class="card"><h3>Laya & ensemble timing</h3><p>Holding the beat with a click track, the skill that makes 5,000 sound like one.</p></div>
@@ -210,6 +263,7 @@ html[lang=mr] details.g summary{font-family:'Tiro Devanagari Marathi',serif}
 <div class="head rv"><h2>The 24-month roadmap</h2><p>Six milestones, each one unlocking the next. Tap a date to see what must be delivered.</p></div>
 <div class="tabs" id="tabs"></div>
 <div class="card ph" id="phase"></div>
+<div class="vz rv" id="vz"></div>
 </section>
 
 <section id="playbook">
@@ -230,6 +284,7 @@ html[lang=mr] details.g summary{font-family:'Tiro Devanagari Marathi',serif}
 
 <section id="wankhede">
 <div class="head rv"><h2>Wankhede action plan</h2><p>A 5,000-participant event is a major live-production and public-safety project. Begin with the venue owner and qualified professionals, and never assume access, capacity, technical specifications or security arrangements.</p></div>
+<div class="card rv fd" id="fld" style="margin-bottom:22px"></div>
 <div class="grid rv" id="ws" style="margin-bottom:46px"></div>
 <div class="tl rv" id="tl"></div>
 <p class="note rv">Please do not publish invented stadium specifications, security procedures, turf-loading figures, VIP access claims or guaranteed guest attendance. The venue and competent authorities must verify and approve every technical and safety decision.</p>
@@ -243,11 +298,13 @@ html[lang=mr] details.g summary{font-family:'Tiro Devanagari Marathi',serif}
 <div class="card" id="ctl"></div>
 <div>
 <div class="res" id="res"></div>
+<div class="card" id="dn" style="margin-top:14px;display:flex;align-items:center;gap:20px;flex-wrap:wrap"></div>
 <div class="card" style="margin-top:14px"><span style="font-size:12px;color:var(--mute)">Progress toward 10,000 students</span><div style="height:12px;background:var(--panel2);border-radius:9px;margin-top:8px;overflow:hidden"><div id="prog" style="height:100%;width:0;background:linear-gradient(90deg,#b98c2e,var(--gold2));transition:width .8s"></div></div></div>
 </div>
 </div>
 </section>
 
+<div class="eq" id="eq" aria-hidden="true"></div>
 <section id="pledge">
 <div class="pledge rv">
 <h2>Help us earn the right to stand on that stage.</h2>
@@ -364,6 +421,93 @@ mb.onclick=()=>menu(!nl.classList.contains('open'));
 nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu(false)));
 addEventListener('keydown',e=>e.key=='Escape'&&menu(false));
 addEventListener('scroll',()=>{const h=document.documentElement;$('sp').style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+'%'},{passive:true});
+const el=id=>document.getElementById(id);
+const J=[['🎓','Enrol'],['🎶','Learn'],['🎤','Audition'],['🥁','Rehearse'],['🏟️','Perform']];
+el('jrw').innerHTML='<h3 style="font-size:28px;margin-top:34px">The student path to the stage</h3><div class="jr">'+J.map(j=>`<div><i>${j[0]}</i><b>${j[1]}</b></div>`).join('')+'</div>';
+/* map */
+const px=(lo,la)=>[(lo-72.2)*45+20,(22.2-la)*48+14];
+const OL=[[72.7,20.2],[73.4,21.1],[74.5,21.6],[76,21.6],[77.5,21.6],[78.6,21.9],[79.9,21.6],[80.9,21],[80.5,20],[79.9,19.3],[79.4,18.7],[78.4,18.9],[77.7,19.4],[77.2,18.2],[76.2,17.5],[75.6,17],[75.2,16.3],[74.3,15.7],[73.7,15.8],[73.3,16.9],[72.9,18.2],[72.8,19.3]];
+const CT=[['Mumbai',72.88,19.07,1],['Pune',73.86,18.52,1],['Nashik',73.79,20],['Chh. Sambhajinagar',75.34,19.88],['Nagpur',79.09,21.15],['Kolhapur',74.24,16.7],['Solapur',75.9,17.67],['Nanded',77.32,19.15],['Amravati',77.75,20.93],['Ahilyanagar',74.74,19.09]];
+const pu=px(73.86,18.52);
+const mp='<svg viewBox="0 0 470 360" role="img" aria-label="Schematic map of Maharashtra network"><polygon points="'+OL.map(q=>px(q[0],q[1]).map(v=>v.toFixed(0)).join(',')).join(' ')+'" fill="rgba(226,184,86,.05)" stroke="rgba(226,184,86,.4)" stroke-width="1.2"/>'+CT.filter(c=>c[0]!='Pune').map(c=>{const p=px(c[1],c[2]);return `<path class="ln" d="M${pu[0]},${pu[1]}L${p[0]},${p[1]}" stroke="rgba(226,184,86,.55)" fill="none"/>`}).join('')+CT.map(c=>{const p=px(c[1],c[2]),h=c[3];return `${h?`<circle class="pl" cx="${p[0]}" cy="${p[1]}" r="6" fill="#e2b856"/>`:''}<circle cx="${p[0]}" cy="${p[1]}" r="${h?6:3.6}" fill="${h?'#fff1c1':'#e2b856'}"/><text x="${c[0]=='Mumbai'?p[0]-10:p[0]+9}" y="${p[1]+(c[0]=='Pune'?16:4)}" text-anchor="${c[0]=='Mumbai'?'end':'start'}">${c[0]}</text>`}).join('')+'</svg>';
+/* growth */
+const GP=[['Nov 2026',100],['Mar 2027',500],['Jun 2027',1500],['Sep 2027',4000],['Dec 2027',10000]];
+const gx=i=>50+i*125,gy=v=>250-v/10000*210;
+const gl=GP.map((g,i)=>gx(i)+','+gy(g[1])).join(' ');
+const gr='<svg viewBox="0 0 600 290" role="img" aria-label="Illustrative growth path to 10,000 students"><defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2b856" stop-opacity=".4"/><stop offset="1" stop-color="#e2b856" stop-opacity="0"/></linearGradient></defs>'+[0,5000,10000].map(v=>`<line x1="40" x2="570" y1="${gy(v)}" y2="${gy(v)}" stroke="rgba(255,255,255,.08)"/><text x="34" y="${gy(v)+4}" text-anchor="end">${v.toLocaleString('en-IN')}</text>`).join('')+`<line x1="40" x2="570" y1="${gy(5000)}" y2="${gy(5000)}" stroke="#5fd3a0" stroke-dasharray="4 5"/><text x="566" y="${gy(5000)-6}" text-anchor="end" fill="#5fd3a0" style="fill:#5fd3a0">5,000 on stage</text><polygon class="ar" points="${gx(0)},250 ${gl} ${gx(4)},250" fill="url(#ga)"/><polyline class="dr" pathLength="1" points="${gl}" fill="none" stroke="#e2b856" stroke-width="3" stroke-linejoin="round"/>`+GP.map((g,i)=>`<circle class="ar" cx="${gx(i)}" cy="${gy(g[1])}" r="5" fill="#fff1c1"/><text x="${gx(i)}" y="${gy(g[1])-12}" text-anchor="middle" style="fill:#fff1c1;font-weight:700">${g[1].toLocaleString('en-IN')}</text><text x="${gx(i)}" y="274" text-anchor="middle">${g[0]}</text>`).join('')+'</svg>';
+el('vz').innerHTML=`<div class="card"><h3 style="font-size:22px">Maharashtra network (schematic)</h3>${mp}</div><div class="card"><h3 style="font-size:22px">Growth path to 10,000 (illustrative)</h3>${gr}<p class="cap">Targets if every gate is met. Replace with your real numbers.</p></div>`;
+/* India rollout map */
+const IN=[[68.2,23.7],[69.4,22.8],[69,22.3],[69.7,21.6],[70.4,20.9],[71,20.8],[72.1,21],[72.6,21.9],[72.9,20.9],[72.8,19.1],[73.3,17],[73.7,15.5],[74.2,14.7],[74.8,12.9],[75.6,11.3],[76.3,9.9],[77,8.4],[77.5,8.1],[78.2,8.8],[79.2,9.3],[79.8,10.5],[80.3,13.1],[80.1,15],[81,15.9],[82.3,16.9],[83.4,17.8],[84.8,19.2],[86,19.9],[86.8,20.7],[87.1,21.6],[88.2,21.7],[89,22.2],[88.8,23.2],[88.3,24.2],[88.5,25],[88.2,25.8],[89,26],[89.9,25.8],[90.4,25.2],[91.9,25.2],[92,24.4],[91.5,23.6],[91.6,22.9],[92.3,23.4],[92.5,22],[93.1,22.7],[93.4,23.8],[93.9,24.3],[94.7,25.2],[94.6,25.9],[95.2,26.4],[96,26.9],[97,27.4],[97.3,28.2],[96.2,29.2],[95.2,29.3],[93.7,28.6],[92.1,28],[91.6,27],[90.5,26.8],[89,26.8],[88.9,27.4],[88.8,28],[88.1,27.9],[88,26.5],[87,26.5],[85,26.7],[83.5,27.4],[81.5,28.5],[80.1,28.8],[80.1,30.2],[79,31],[79.5,32.5],[78.9,34.3],[78,35.5],[77,35.6],[76,36.8],[74.9,37],[73.5,36],[73,34.9],[74,34],[74.3,33],[74.6,32.6],[75,32],[74.5,31.5],[74,31],[73.5,29.8],[72.3,28.6],[70.9,27.8],[70.3,26.6],[70,25.5],[69.5,24.3]];
+const px2=(lo,la)=>[(lo-67.5)*14.4+20,(37.6-la)*15.5+14];
+const sp=t=>t.split(';').map(r=>{const a=r.split(',');return[a[0],+a[1],+a[2]]});
+const HUB=sp('Andheri,72.85,19.12;Dadar,72.84,19.02;Thane,72.98,19.2;Borivali,72.86,19.23;Vashi,73,19.07');
+const DSL=sp('Ahilyanagar,74.74,19.09;Akola,77,20.7;Amravati,77.75,20.93;Chh. Sambhajinagar,75.34,19.88;Beed,75.76,18.99;Bhandara,79.65,21.17;Buldhana,76.18,20.53;Chandrapur,79.3,19.96;Dhule,74.77,20.9;Gadchiroli,80.2,20.18;Gondia,80.2,21.46;Hingoli,77.15,19.72;Jalgaon,75.57,21;Jalna,75.88,19.84;Kolhapur,74.24,16.7;Latur,76.58,18.4;Nagpur,79.09,21.15;Nanded,77.32,19.15;Nandurbar,74.24,21.37;Nashik,73.79,20;Dharashiv,76.04,18.19;Palghar,72.77,19.7;Parbhani,76.78,19.27;Raigad,73,18.52;Ratnagiri,73.3,16.99;Sangli,74.57,16.85;Satara,74,17.69;Sindhudurg,73.67,16.13;Solapur,75.9,17.67;Wardha,78.6,20.75;Washim,77.14,20.11;Yavatmal,78.12,20.39');
+const CPL=sp('Amaravati,80.52,16.51;Itanagar,93.62,27.08;Dispur,91.79,26.14;Patna,85.14,25.6;Raipur,81.63,21.25;Panaji,73.83,15.49;Gandhinagar,72.65,23.22;Chandigarh,76.78,30.73;Shimla,77.17,31.1;Ranchi,85.33,23.34;Bengaluru,77.59,12.97;Thiruvananthapuram,76.94,8.52;Bhopal,77.41,23.26;Imphal,93.94,24.82;Shillong,91.88,25.57;Aizawl,92.72,23.73;Kohima,94.1,25.67;Bhubaneswar,85.82,20.3;Jaipur,75.79,26.91;Gangtok,88.61,27.33;Chennai,80.27,13.08;Hyderabad,78.49,17.39;Agartala,91.28,23.83;Lucknow,80.95,26.85;Dehradun,78.03,30.32;Kolkata,88.36,22.57');
+const MK=[];
+const PB=sp('Civil Court,73.8566,18.5265;Shivajinagar,73.8534,18.5314;Swargate,73.858,18.5018;Deccan,73.847,18.5167;Vanaz,73.7897,18.5075;PCMC,73.8005,18.6286;Bhosari,73.8265,18.6075;Khadki,73.8525,18.5545;Pune Station,73.874,18.529;Yerawada,73.903,18.5445;Kalyani Nagar,73.915,18.547;Ramwadi,73.942,18.56;Nal Stop,73.8325,18.5085;Hinjewadi,73.7395,18.5915;Balewadi,73.7765,18.57');
+PB.forEach((b,k)=>MK.push({n:b[0],lo:b[1],la:b[2],m:k<5?0:1,g:'p'}));
+HUB.forEach(h=>MK.push({n:h[0],lo:h[1],la:h[2],m:4,g:'m'}));
+DSL.forEach(d=>MK.push({n:d[0],lo:d[1],la:d[2],m:7,g:'d'}));
+CPL.forEach(d=>MK.push({n:d[0],lo:d[1],la:d[2],m:10,g:'c'}));
+const CL={p:['#e2b856',3.2,6.5],m:['#5fd3a0',3.2,30],d:['#7fb2ff',3,150],c:['#e88fd0',3.8,480]};
+MK.forEach(m=>{const p=px2(m.lo,m.la);m.x=p[0];m.y=p[1];m.rp=CL[m.g][1];m.lt=CL[m.g][2]});
+const MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan'].map((m,i)=>m+' '+(i<12?2027:2028));
+const MS={0:['Pune core flagships',150],1:['Pune Metro corridor',500],4:['Mumbai hubs',1500],7:['All 36 Maharashtra districts',4000],10:['All 28 state capitals',10000],12:['Wankhede Stadium symphony',10000]};
+const ML=[['Purple','#a970ff','73.8005,18.6286 73.8135,18.6195 73.8265,18.6075 73.8325,18.5945 73.8375,18.5835 73.8395,18.5725 73.8465,18.5585 73.8525,18.5545 73.8365,18.539 73.8534,18.5314 73.8566,18.5265 73.8578,18.5183 73.857,18.511 73.858,18.5018'],['Aqua','#3fd0e0','73.7897,18.5075 73.8055,18.5105 73.8148,18.5098 73.8325,18.5085 73.8412,18.514 73.847,18.5167 73.852,18.519 73.8566,18.5265 73.866,18.529 73.874,18.529 73.8825,18.5345 73.89,18.536 73.903,18.5445 73.915,18.547 73.942,18.56'],['Pink','#ff7ab8','73.7395,18.5915 73.7765,18.57 73.824,18.552 73.8534,18.5314']];
+const pc=px2(73.86,18.52),mu=px2(72.87,19.08),pp=a=>a.map(q=>px2(q[0],q[1]).map(v=>v.toFixed(2)).join(',')).join(' ');
+const gr2=[70,75,80,85,90,95].map(l=>{const a=px2(l,38),b=px2(l,6);return `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"/>`}).join('')+[10,15,20,25,30,35].map(l=>{const a=px2(66,l),b=px2(99,l);return `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"/>`}).join('');
+const mpl=ML.map(l=>`<polyline points="${pp(l[2].split(' ').map(q=>q.split(',').map(Number)))}" fill="none" stroke="${l[1]}" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>`).join('');
+const imap=`<div class="fz" id="fz"><svg id="fmap" viewBox="0 0 470 490" role="img" aria-label="Zoomable map of India with branches by month"><g class="gt" stroke="rgba(255,255,255,.07)">${gr2}</g><polygon points="${IN.map(q=>px2(q[0],q[1]).map(v=>v.toFixed(1)).join(',')).join(' ')}" fill="rgba(226,184,86,.05)" stroke="rgba(226,184,86,.5)" stroke-width="1.4" stroke-linejoin="round"/><polygon points="${OL.map(q=>px2(q[0],q[1]).map(v=>v.toFixed(1)).join(',')).join(' ')}" fill="rgba(226,184,86,.1)" stroke="rgba(226,184,86,.55)" stroke-width="1" stroke-dasharray="4 3"/><g id="ml">${mpl}</g>${MK.map(m=>`<circle class="mk" data-m="${m.m}" cx="${m.x.toFixed(2)}" cy="${m.y.toFixed(2)}" r="3" fill="${CL[m.g][0]}"><title>${m.n}</title></circle>`).join('')}${MK.map(m=>`<text class="lb">${m.n}</text>`).join('')}<text class="mk" data-m="12" id="stz" x="${mu[0]-20}" y="${mu[1]+8}" text-anchor="middle" style="fill:#fff1c1">★</text><text class="sl" id="s1" text-anchor="end">Mumbai</text><text class="sl" id="s2">Pune</text><text class="sl" id="s3" text-anchor="middle" style="fill:#e2b856">Maharashtra</text><text class="sl sea" id="s4" text-anchor="middle">Arabian Sea</text><text class="sl sea" id="s5" text-anchor="middle">Bay of Bengal</text>${ML.map((l,i)=>`<text class="sl ln2" data-i="${i}" style="fill:${l[1]}">${l[0]} line</text>`).join('')}</svg><div class="zc"><button id="zi" aria-label="Zoom in">+</button><button id="zo" aria-label="Zoom out">−</button><button id="za" class="on">Auto-fit</button></div><div class="sb"><i id="sbi"></i><span id="sbt"></span></div></div>`;
+el('fld').innerHTML=`<h3 style="font-size:26px;margin-bottom:16px">India rollout map: branches by month</h3><div class="fdg">${imap}<div><div class="fmo" id="fmo"></div><div class="fph" id="fph"></div><input type="range" id="fsl" min="0" max="12" value="0" aria-label="Month"><div class="chips" id="fch">${[0,1,4,7,10,12].map(i=>`<button data-i="${i}">${MO[i]}</button>`).join('')}</div><button class="btn" id="fpl" style="padding:9px 22px;font-size:13px">Play</button><div class="res" style="margin-top:18px"><div><span>Branches so far</span><b id="fb">0</b></div><div><span>New this month</span><b id="fnw">0</b></div><div><span>Students target (plan)</span><b id="fst">0</b></div><div><span>Students per branch (implied)</span><b id="fps">0</b></div></div><div class="lgd"><span style="--c:#e2b856">Pune</span><span style="--c:#5fd3a0">Mumbai hubs</span><span style="--c:#7fb2ff">Maharashtra districts</span><span style="--c:#e88fd0">State capitals</span><span style="--c:#fff1c1">Wankhede</span></div></div></div><p class="cap">Zoom with the buttons, drag to move, or Ctrl + scroll. Auto-fit follows the area captured so far. City and metro-station positions are approximate.</p><p class="cap">Counts show the minimum branches implied by your month-wise plan: one per location, with Pune and Mumbai districts counted once. Staging inside each phase is schematic.</p><p class="cap">Implied students per branch is the plan’s student target divided by the branches shown. If it looks too high, add branches or grow branch size.</p>`;
+const fz=el('fz'),msv=el('fmap'),AR=490/470,CE=[...msv.querySelectorAll('circle.mk')],LE=[...msv.querySelectorAll('text.lb')],L2=[...msv.querySelectorAll('.ln2')];
+const LP=[[73.8005,18.6286],[73.942,18.56],[73.7395,18.5915]].map(q=>px2(q[0],q[1]));
+let fi=0,pt=null,manual=false,af=0,VW={cx:235,cy:245,w:470};
+function ap(){const w=VW.w,h=w*AR,cw=msv.clientWidth||430,k=w/cw,z=Math.min(2.2,1+Math.log2(470/w)*.25),fs=v=>(v*k).toFixed(4)+'px',op=(e,v)=>e.style.opacity=v;
+msv.style.setProperty('--sw',(3*k).toFixed(4)+'px');msv.setAttribute('viewBox',(VW.cx-w/2).toFixed(3)+' '+(VW.cy-h/2).toFixed(3)+' '+w.toFixed(3)+' '+h.toFixed(3));
+MK.forEach((m,i)=>{const rp=m.rp*z,c=CE[i],l=LE[i];c.setAttribute('r',(rp*k).toFixed(4));l.setAttribute('x',(m.x+(rp+3)*k).toFixed(3));l.setAttribute('y',(m.y+3*k).toFixed(3));l.style.fontSize=fs(9);op(l,m.m<=fi&&w<m.lt?1:0)});
+const sl=(id,x,y,f,v)=>{const e=el(id);e.setAttribute('x',x);e.setAttribute('y',y);e.style.fontSize=fs(f);op(e,v?1:0)};
+sl('s1',mu[0]-8*k,mu[1]-6*k,10,w>=30);sl('s2',pc[0]+8*k,pc[1]+14*k,10,w>=6.5&&w<150);sl('s3',...px2(76.6,19.9),13,w>40&&w<300);sl('s4',...px2(68.9,14),11,w>150);sl('s5',...px2(86.5,14.5),11,w>150);
+L2.forEach((e,i)=>{e.setAttribute('x',LP[i][0]+4*k);e.setAttribute('y',LP[i][1]-5*k);e.style.fontSize=fs(8.5);op(e,w<10?1:0)});
+el('ml').style.opacity=Math.max(0,Math.min(1,(60-w)/30));el('stz').style.fontSize=fs(20);
+const km=cw*0.2*k*7.2,p10=Math.pow(10,Math.floor(Math.log10(km))),nk=[1,2,5,10].map(m=>m*p10).reduce((a,b)=>Math.abs(b-km)<Math.abs(a-km)?b:a);
+el('sbi').style.width=(nk/(k*7.2))+'px';el('sbt').textContent='≈ '+(nk<1?nk.toFixed(1):nk)+' km'}
+function tgt(){let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;MK.filter(m=>m.m<=fi).forEach(m=>{x0=Math.min(x0,m.x);x1=Math.max(x1,m.x);y0=Math.min(y0,m.y);y1=Math.max(y1,m.y)});
+const w=Math.min(470,Math.max(5,(x1-x0)*1.3,(y1-y0)/AR*1.3));return{cx:Math.max(w/2,Math.min(470-w/2,(x0+x1)/2)),cy:Math.max(w*AR/2,Math.min(490-w*AR/2,(y0+y1)/2)),w}}
+function fly(t,d){cancelAnimationFrame(af);const a={...VW},s=performance.now(),dur=reduce?0:(d||1000);
+const step=n=>{const p=dur?Math.min(1,(n-s)/dur):1,e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;VW.cx=a.cx+(t.cx-a.cx)*e;VW.cy=a.cy+(t.cy-a.cy)*e;VW.w=Math.exp(Math.log(a.w)+(Math.log(t.w)-Math.log(a.w))*e);ap();if(p<1)af=requestAnimationFrame(step)};af=requestAnimationFrame(step)}
+function setM(v){manual=v;fz.classList.toggle('manual',v);el('za').classList.toggle('on',!v)}
+function fu(){const i=fi;let ph=0;for(const k in MS)if(+k<=i)ph=+k;
+const tot=MK.filter(m=>m.m<=i&&m.m<12).length,nw=MK.filter(m=>m.m==i&&m.m<12).length,st=MS[ph][1];
+CE.forEach(c=>{const m=+c.dataset.m;c.classList.toggle('on',m<=i);c.classList.toggle('nw',m==i&&(i in MS))});el('stz').classList.toggle('on',i>=12);
+el('fmo').textContent=MO[i];el('fsl').value=i;el('fb').textContent=tot;el('fnw').textContent='+'+nw;el('fst').textContent=st.toLocaleString('en-IN')+'+';el('fps').textContent=Math.round(st/tot);
+el('fph').textContent=tx(MS[ph][0]);
+document.querySelectorAll('#fch button').forEach(b=>b.classList.toggle('on',+b.dataset.i==i));
+el('fpl').textContent=tx(pt?'Pause':'Play');if(manual)ap();else fly(tgt())}
+function fstop(){if(pt){clearInterval(pt);pt=null}}
+el('fsl').oninput=e=>{fstop();fi=+e.target.value;fu()};
+document.querySelectorAll('#fch button').forEach(b=>b.onclick=()=>{fstop();fi=+b.dataset.i;fu()});
+el('fpl').onclick=()=>{if(pt){fstop();fu();return}if(fi>=12)fi=0;fu();pt=setInterval(()=>{if(fi>=12){fstop();fu();return}fi++;fu()},1600);fu()};
+/* zoom controls */
+const clampV=()=>{VW.cx=Math.max(0,Math.min(470,VW.cx));VW.cy=Math.max(0,Math.min(490,VW.cy))};
+const toVB=(x,y)=>{const r=msv.getBoundingClientRect();return[VW.cx-VW.w/2+(x-r.left)/r.width*VW.w,VW.cy-VW.w*AR/2+(y-r.top)/r.height*VW.w*AR]};
+function zoomBy(f,fx,fy){setM(true);cancelAnimationFrame(af);const nw=Math.max(3,Math.min(470,VW.w*f)),r=nw/VW.w;VW.cx=fx+(VW.cx-fx)*r;VW.cy=fy+(VW.cy-fy)*r;VW.w=nw;clampV();ap()}
+el('zi').onclick=()=>{setM(true);fly({cx:VW.cx,cy:VW.cy,w:Math.max(3,VW.w/1.8)},380)};
+el('zo').onclick=()=>{setM(true);fly({cx:VW.cx,cy:VW.cy,w:Math.min(470,VW.w*1.8)},380)};
+el('za').onclick=()=>{setM(false);fly(tgt(),900)};
+msv.addEventListener('wheel',e=>{if(!(e.ctrlKey||e.metaKey))return;e.preventDefault();const p=toVB(e.clientX,e.clientY);zoomBy(e.deltaY>0?1.15:.87,p[0],p[1])},{passive:false});
+const PT=new Map();let pdist=0;
+msv.addEventListener('pointerdown',e=>{PT.set(e.pointerId,[e.clientX,e.clientY]);pdist=0;try{msv.setPointerCapture(e.pointerId)}catch(_){}});
+msv.addEventListener('pointermove',e=>{const o=PT.get(e.pointerId);if(!o)return;
+if(PT.size==1){const dx=e.clientX-o[0],dy=e.clientY-o[1];pdist+=Math.abs(dx)+Math.abs(dy);if(pdist>5){setM(true);fz.classList.add('drag');cancelAnimationFrame(af);const k=VW.w/msv.getBoundingClientRect().width;VW.cx-=dx*k;VW.cy-=dy*k;clampV();ap()}}
+else if(PT.size==2){let q;PT.forEach((v,id)=>{if(id!=e.pointerId)q=v});const d0=Math.hypot(o[0]-q[0],o[1]-q[1]),d1=Math.hypot(e.clientX-q[0],e.clientY-q[1]);if(d0>0&&d1>0){const f=toVB((e.clientX+q[0])/2,(e.clientY+q[1])/2);zoomBy(d0/d1,f[0],f[1])}}
+PT.set(e.pointerId,[e.clientX,e.clientY])});
+['pointerup','pointercancel','pointerleave'].forEach(t=>msv.addEventListener(t,e=>{PT.delete(e.pointerId);fz.classList.remove('drag')}));
+addEventListener('resize',ap);
+VW=tgt();fu();ap();
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){o.disconnect();if(!matchMedia('(prefers-reduced-motion:reduce)').matches)el('fpl').click()}},{threshold:.4}).observe(el('fld'));
+/* split donut */
+el('dn').innerHTML='<div style="width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--green) 0 70%,var(--gold) 0 100%);display:grid;place-items:center;flex:none"><div style="width:76px;height:76px;border-radius:50%;background:var(--panel);display:grid;place-items:center;font:700 24px \'Cormorant Garamond\',serif">70/30</div></div><div><span style="font-size:12px;color:var(--mute)">Fixed revenue split</span><div class="lgd" style="flex-direction:column;margin-top:8px"><span style="--c:var(--green)">70% Certified teacher</span><span style="--c:var(--gold)">30% Musicoul HQ</span></div></div>';
+el('eq').innerHTML=Array.from({length:44},(_,i)=>`<span style="--h:${20+Math.round(60*Math.abs(Math.sin(i*.7)*Math.cos(i*.23)))}%;--d:-${(Math.random()*1.3).toFixed(2)}s"></span>`).join('');
 const G=[
 ['Open a new branch','6–8 weeks · Owner: regional lead · Go/no-go at the end',['<b>Choose the catchment.</b> Map schools, housing clusters and metro or rail stops within 20 minutes of travel. List three nearby competitors and their fees.','<b>Prove demand first.</b> Run two open classes and collect a waiting list. Do not sign a lease before at least 25 families have asked to enrol.','<b>Secure space cheaply.</b> Start with a partner school, hall or shared studio. Keep rent below about a quarter of projected monthly fees, and get the agreement in writing.','<b>Fit out safely.</b> Check ventilation, basic sound insulation, seating, instruments, fire extinguisher, first-aid kit, clear exits and a visible fee and rules board.','<b>Staff it.</b> Assign one certified teacher and one coordinator, both background-checked, with parent contact numbers and an emergency plan on the wall.','<b>Soft launch.</b> Offer a free trial week, publish the fee schedule and timetable, and enrol the first batch with signed parent consent.','<b>Review at weeks 4 and 8.</b> Check attendance, retention, teacher feedback and break-even. Open the next branch only after this one meets its targets.']],
 ['Train and certify a teacher','12 weeks · Owner: academic head · Cohorts of up to 30',['<b>Select.</b> Use a short audition, a five-minute teaching demo and two references. Choose patience and attitude as much as skill.','<b>Weeks 1–4: foundations.</b> Teach the Musicoul syllabus levels, the scoring rubric, lesson planning and child-safeguarding rules.','<b>Weeks 5–8: shadow and assist.</b> Observe three live classes, then co-teach under a mentor with written feedback after each session.','<b>Weeks 9–10: mock classes.</b> Record two practice lessons and review them against the rubric with the mentor.','<b>Week 11: assess.</b> Practical, teaching and safeguarding tests with a clear pass mark. Allow one retake after coaching.','<b>Week 12 onward: place and mentor.</b> Place the teacher at a branch, observe monthly for the first 90 days, and review student feedback each quarter.']],
@@ -403,7 +547,7 @@ const D=[
 ['Students','विद्यार्थी','विद्यार्थी'],['Gross / month','कुल / माह','एकूण / महिना'],['Rent','किराया','भाडे'],['Net pool','शुद्ध राशि','निव्वळ रक्कम'],['Teachers get (70%)','शिक्षकों को (70%)','शिक्षकांना (70%)'],['HQ royalty (30%)','मुख्यालय रॉयल्टी (30%)','मुख्यालय रॉयल्टी (30%)'],['Fixed split: 70% to the certified teacher, 30% to Musicoul HQ.','निश्चित बँटवारा: 70% प्रमाणित शिक्षक को, 30% म्यूज़िकॉल मुख्यालय को।','निश्चित वाटणी: 70% प्रमाणित शिक्षकाला, 30% म्युझिकॉल मुख्यालयाला.'],['Progress toward 10,000 students','10,000 विद्यार्थियों की ओर प्रगति','10,000 विद्यार्थ्यांकडे प्रगती'],
 ['Help us earn the right to stand on that stage.','उस मंच पर खड़े होने का हक़ कमाने में हमारी मदद करें।','त्या मंचावर उभे राहण्याचा हक्क मिळवण्यात आम्हाला साथ द्या.'],['This is not a promise…','यह इस बात का वादा नहीं कि आयोजन पक्का हो चुका है। यह साथ मिलकर उत्कृष्ट शिक्षण, भरोसा और ज़िम्मेदार तैयारी का संकल्प है।','कार्यक्रम निश्चित झाल्याचे हे वचन नाही. उत्कृष्ट अध्यापन, विश्वास आणि जबाबदार तयारी यांसाठी एकत्र केलेला हा संकल्प आहे.'],
 ['Join the mission','मिशन से जुड़ें','ध्येयात सामील व्हा'],['Your entry shows…','आपकी प्रविष्टि केवल इसी ब्राउज़र में दिखती है। यह म्यूज़िकॉल को भेजी नहीं जाती।','तुमची नोंद फक्त याच ब्राउझरमध्ये दिसते. ती म्युझिकॉलला पाठवली जात नाही.'],['Musicoul mission member','म्यूज़िकॉल मिशन सदस्य','म्युझिकॉल ध्येय सदस्य'],['Committed to the Wankhede mission, 2028','वानखेड़े मिशन 2028 के प्रति संकल्पित','वानखेडे ध्येय 2028 साठी वचनबद्ध'],['Your name or branch code','आपका नाम या शाखा कोड','तुमचे नाव किंवा शाखा कोड'],
-['Musicoul Classes · Founded by Chandrashekhar Kolhe · 21 January 2026','म्यूज़िकॉल क्लासेस · संस्थापक चंद्रशेखर कोल्हे · 21 जनवरी 2026','म्युझिकॉल क्लासेस · संस्थापक चंद्रशेखर कोल्हे · 21 जानेवारी 2026'],['Target: 10,000+ enrolled, 5,000+ at Wankhede Stadium, 21 January 2028','लक्ष्य: 10,000+ नामांकित, वानखेड़े स्टेडियम में 5,000+, 21 जनवरी 2028','उद्दिष्ट: 10,000+ नोंदणीकृत, वानखेडे स्टेडियमवर 5,000+, 21 जानेवारी 2028'],['The venue, date, capacity…','स्थल, तिथि, क्षमता, अतिथि उपस्थिति और सभी अनुमतियाँ संबंधित अधिकारियों की लिखित पुष्टि के अधीन हैं।','स्थळ, तारीख, क्षमता, पाहुण्यांची उपस्थिती आणि सर्व परवानग्या संबंधित प्राधिकरणांच्या लेखी पुष्टीच्या अधीन आहेत.'],['How-to','विधि','पद्धती'],['Step-by-step methods: exactly how to do it','चरण-दर-चरण विधि: ठीक कैसे करें','टप्प्याटप्प्याने पद्धती: नेमके कसे करावे'],['Open a guide…','किसी मार्गदर्शिका को खोलें, चरणों को क्रम से करें और आगे बढ़ने से पहले हर चरण जाँचें।','मार्गदर्शिका उघडा, पायऱ्या क्रमाने करा आणि पुढे जाण्यापूर्वी प्रत्येक पायरी तपासा.'],['Open a new branch','नई शाखा खोलें','नवी शाखा सुरू करा'],['Train and certify a teacher','शिक्षक को प्रशिक्षित व प्रमाणित करें','शिक्षकाला प्रशिक्षित व प्रमाणित करा'],['Win and keep students','विद्यार्थी जोड़ें और बनाए रखें','विद्यार्थी मिळवा आणि टिकवा'],['Run a district audition day','जिला ऑडिशन दिवस आयोजित करें','जिल्हा ऑडिशन दिवस आयोजित करा'],['Prepare the Wankhede proposal','वानखेड़े प्रस्ताव तैयार करें','वानखेडे प्रस्ताव तयार करा'],['Build the rehearsal pyramid','रिहर्सल पिरामिड बनाएँ','रिहर्सल पिरॅमिड उभारा'],['Fund the stage','मंच के लिए धन जुटाएँ','मंचासाठी निधी उभारा']];
+['Musicoul Classes · Founded by Chandrashekhar Kolhe · 21 January 2026','म्यूज़िकॉल क्लासेस · संस्थापक चंद्रशेखर कोल्हे · 21 जनवरी 2026','म्युझिकॉल क्लासेस · संस्थापक चंद्रशेखर कोल्हे · 21 जानेवारी 2026'],['Target: 10,000+ enrolled, 5,000+ at Wankhede Stadium, 21 January 2028','लक्ष्य: 10,000+ नामांकित, वानखेड़े स्टेडियम में 5,000+, 21 जनवरी 2028','उद्दिष्ट: 10,000+ नोंदणीकृत, वानखेडे स्टेडियमवर 5,000+, 21 जानेवारी 2028'],['The venue, date, capacity…','स्थल, तिथि, क्षमता, अतिथि उपस्थिति और सभी अनुमतियाँ संबंधित अधिकारियों की लिखित पुष्टि के अधीन हैं।','स्थळ, तारीख, क्षमता, पाहुण्यांची उपस्थिती आणि सर्व परवानग्या संबंधित प्राधिकरणांच्या लेखी पुष्टीच्या अधीन आहेत.'],['How-to','विधि','पद्धती'],['Step-by-step methods: exactly how to do it','चरण-दर-चरण विधि: ठीक कैसे करें','टप्प्याटप्प्याने पद्धती: नेमके कसे करावे'],['Open a guide…','किसी मार्गदर्शिका को खोलें, चरणों को क्रम से करें और आगे बढ़ने से पहले हर चरण जाँचें।','मार्गदर्शिका उघडा, पायऱ्या क्रमाने करा आणि पुढे जाण्यापूर्वी प्रत्येक पायरी तपासा.'],['Open a new branch','नई शाखा खोलें','नवी शाखा सुरू करा'],['Train and certify a teacher','शिक्षक को प्रशिक्षित व प्रमाणित करें','शिक्षकाला प्रशिक्षित व प्रमाणित करा'],['Win and keep students','विद्यार्थी जोड़ें और बनाए रखें','विद्यार्थी मिळवा आणि टिकवा'],['Run a district audition day','जिला ऑडिशन दिवस आयोजित करें','जिल्हा ऑडिशन दिवस आयोजित करा'],['Prepare the Wankhede proposal','वानखेड़े प्रस्ताव तैयार करें','वानखेडे प्रस्ताव तयार करा'],['Build the rehearsal pyramid','रिहर्सल पिरामिड बनाएँ','रिहर्सल पिरॅमिड उभारा'],['Fund the stage','मंच के लिए धन जुटाएँ','मंचासाठी निधी उभारा'],['Enrol','नामांकन','नोंदणी'],['Learn','सीखें','शिका'],['Audition','ऑडिशन','ऑडिशन'],['Rehearse','रिहर्सल','रिहर्सल'],['Perform','प्रस्तुति','सादरीकरण'],['The student path to the stage','विद्यार्थी का मंच तक का सफ़र','विद्यार्थ्याचा मंचापर्यंतचा प्रवास'],['Maharashtra network (schematic)','महाराष्ट्र नेटवर्क (योजनात्मक)','महाराष्ट्र नेटवर्क (आराखडा)'],['Growth path to 10,000 (illustrative)','10,000 तक वृद्धि पथ (उदाहरण)','10,000 पर्यंत वाढीचा मार्ग (उदाहरण)'],['Targets if every gate is met…','लक्ष्य तब, जब हर गेट पार हो। इन्हें अपने असली आँकड़ों से बदलें।','प्रत्येक गेट पार झाल्यास ही उद्दिष्टे. त्यांच्या जागी तुमचे खरे आकडे वापरा.'],['5,000 on stage','मंच पर 5,000','मंचावर 5,000'],['Illustrative field layout…','उदाहरण स्वरूप मैदान-रचना: हर बिंदु ≈ 8 कलाकार','उदाहरणादाखल मैदानाची रचना: प्रत्येक ठिपका ≈ 8 कलाकार'],['Colours show five…','रंग पाँच उदाहरण क्षेत्रीय समूह दिखाते हैं। केंद्र: सुरक्षित पिच और संचालक मंच। यह आधिकारिक योजना नहीं है; अंतिम रचना स्थल और प्रोडक्शन टीम तय करेगी।','रंग पाच उदाहरणादाखल प्रादेशिक गट दाखवतात. मध्यभाग: संरक्षित पिच आणि संचालक मंच. ही अधिकृत योजना नाही; अंतिम रचना स्थळ आणि निर्मिती चमू ठरवेल.'],['Fixed revenue split','निश्चित राजस्व बँटवारा','निश्चित महसूल वाटणी'],['70% Certified teacher','70% प्रमाणित शिक्षक','70% प्रमाणित शिक्षक'],['30% Musicoul HQ','30% म्यूज़िकॉल मुख्यालय','30% म्युझिकॉल मुख्यालय'],['Zoom with the buttons…','बटनों से ज़ूम करें, खींचकर हिलाएँ, या Ctrl + स्क्रॉल करें। ऑटो-फ़िट अब तक कवर किए क्षेत्र का अनुसरण करता है। शहर और मेट्रो-स्टेशन की स्थितियाँ अनुमानित हैं।','बटणांनी झूम करा, ओढून हलवा, किंवा Ctrl + स्क्रोल करा. ऑटो-फिट आतापर्यंत व्यापलेल्या क्षेत्राचा मागोवा घेते. शहर आणि मेट्रो-स्थानकांची ठिकाणे अंदाजे आहेत.'],['Auto-fit','ऑटो-फ़िट','ऑटो-फिट'],['India rollout map: branches by month','भारत विस्तार मानचित्र: माह के अनुसार शाखाएँ','भारत विस्तार नकाशा: महिन्यानुसार शाखा'],['Branches so far','अब तक शाखाएँ','आतापर्यंत शाखा'],['New this month','इस माह नई','या महिन्यात नवीन'],['Students target (plan)','विद्यार्थी लक्ष्य (योजना)','विद्यार्थी उद्दिष्ट (योजना)'],['Students per branch (implied)','प्रति शाखा विद्यार्थी (अनुमानित)','प्रति शाखा विद्यार्थी (अनुमानित)'],['Play','चलाएँ','चालवा'],['Pause','रोकें','थांबवा'],['Pune core flagships','पुणे के मुख्य केंद्र','पुणे मुख्य केंद्रे'],['Pune Metro corridor','पुणे मेट्रो मार्ग','पुणे मेट्रो मार्ग'],['All 36 Maharashtra districts','महाराष्ट्र के सभी 36 जिले','महाराष्ट्रातील सर्व 36 जिल्हे'],['All 28 state capitals','सभी 28 राज्य राजधानियाँ','सर्व 28 राज्य राजधान्या'],['Wankhede Stadium symphony','वानखेड़े स्टेडियम सिम्फनी','वानखेडे स्टेडियम सिम्फनी'],['Pune','पुणे','पुणे'],['Maharashtra districts','महाराष्ट्र के जिले','महाराष्ट्रातील जिल्हे'],['State capitals','राज्य राजधानियाँ','राज्य राजधान्या'],['Wankhede','वानखेड़े','वानखेडे'],['Counts show…','संख्या आपकी माह-दर-माह योजना से निकली न्यूनतम शाखाएँ दिखाती है: हर स्थान पर एक, पुणे और मुंबई के जिले एक बार गिने गए। चरण के भीतर का क्रम योजनात्मक है।','संख्या तुमच्या महिनावार योजनेतून निघणाऱ्या किमान शाखा दाखवतात: प्रत्येक ठिकाणी एक, पुणे आणि मुंबईचे जिल्हे एकदाच मोजले आहेत. टप्प्यातील क्रम आराखड्यापुरता आहे.'],['Implied students…','अनुमानित विद्यार्थी प्रति शाखा = योजना का विद्यार्थी लक्ष्य ÷ दिखाई गई शाखाएँ। यदि यह बहुत अधिक लगे, तो शाखाएँ बढ़ाएँ या शाखा का आकार बढ़ाएँ।','अनुमानित विद्यार्थी प्रति शाखा = योजनेचे विद्यार्थी उद्दिष्ट ÷ दाखवलेल्या शाखा. ते खूप जास्त वाटल्यास शाखा वाढवा किंवा शाखेचा आकार वाढवा.']];
 const IX={en:0,hi:1,mr:2},M={},PRE=[];
 D.forEach(r=>r[0].endsWith('…')?PRE.push([r[0].slice(0,-1),r]):M[r[0]]=r);
 let lang='en';try{lang=localStorage.getItem('mcl')||'en'}catch(e){}
@@ -411,8 +555,8 @@ if(!(lang in IX))lang='en';
 const OG=new WeakMap();
 function tx(k){if(!window.LR)return k;const r=M[k];return r?r[IX[lang]]:k}
 function fnd(k){return M[k]||(PRE.find(p=>k.startsWith(p[0]))||[])[1]}
-function L(root){const w=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const pn=n.parentNode.nodeName;if(pn=='SCRIPT'||pn=='STYLE')continue;let o=OG.get(n);if(o===undefined){o=n.nodeValue;OG.set(n,o)}const k=o.trim();if(!k)continue;const r=fnd(k);if(r)n.nodeValue=o.replace(k,()=>r[IX[lang]])}$('nm').placeholder=tx('Your name or branch code')}
-function setLang(l){lang=l;try{localStorage.setItem('mcl',l)}catch(e){}document.documentElement.lang=l;document.querySelectorAll('.lg button').forEach(b=>{const on=b.dataset.l==l;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});L();ck();tick()}
+function L(root){const w=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const pn=n.parentNode.nodeName;if(pn=='SCRIPT'||pn=='STYLE')continue;let o=OG.get(n);if(o===undefined){o=n.nodeValue;OG.set(n,o)}const k=o.trim();if(!k)continue;const r=fnd(k);if(r)n.nodeValue=lang=='en'?o:o.replace(k,()=>r[IX[lang]])}$('nm').placeholder=tx('Your name or branch code')}
+function setLang(l){lang=l;try{localStorage.setItem('mcl',l)}catch(e){}document.documentElement.lang=l;document.querySelectorAll('.lg button').forEach(b=>{const on=b.dataset.l==l;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});L();ck();tick();window.fu&&fu()}
 document.querySelectorAll('.lg button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 window.LR=true;setLang(lang);
 watch();
