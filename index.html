@@ -6,7 +6,7 @@
 <title>Musicoul Classes — The Road to Wankhede 2028</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Manrope:wght@300;400;500;700;800&family=Tiro+Devanagari+Hindi&family=Tiro+Devanagari+Marathi&family=Mukta:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#07080c;--panel:#0e1018;--panel2:#141725;--line:rgba(226,184,86,.16);--gold:#e2b856;--gold2:#fff1c1;--ink:#e8e6df;--mute:#8d93a6;--green:#5fd3a0;--red:#ef6a5e;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:border-box;margin:0}
@@ -88,10 +88,73 @@ input[type=range]{width:100%;accent-color:var(--gold)}
 footer{text-align:center;padding:50px 5vw;color:var(--mute);font-size:13px;border-top:1px solid var(--line)}
 @media(max-width:820px){nav div{display:none}.ph,.calc{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.bar{width:var(--w)}}
+
+::selection{background:var(--gold);color:#1a1405}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#sp{position:fixed;top:0;left:0;height:3px;width:0;z-index:80;background:linear-gradient(90deg,var(--gold),var(--gold2));box-shadow:0 0 12px var(--gold)}
+nav{background:rgba(7,8,12,.72);box-shadow:0 12px 40px -20px #000}
+nav b{background:linear-gradient(100deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero{min-height:100svh}
+.head::before{content:"";display:block;width:56px;height:2px;margin-bottom:18px;background:linear-gradient(90deg,var(--gold),transparent)}
+.card{background:linear-gradient(160deg,rgba(226,184,86,.07),var(--panel) 42%);box-shadow:0 24px 50px -32px #000,inset 0 1px 0 rgba(255,241,193,.08)}
+.card:hover{box-shadow:0 28px 60px -28px rgba(226,184,86,.4),inset 0 1px 0 rgba(255,241,193,.14)}
+.nums{box-shadow:0 30px 80px -40px rgba(226,184,86,.35)}
+.nums div{background:linear-gradient(180deg,#121522,var(--panel))}
+.tabs{scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs button{scroll-snap-align:center;min-height:44px}
+.pledge{box-shadow:0 40px 100px -50px rgba(226,184,86,.45),inset 0 1px 0 rgba(255,241,193,.12)}
+.mb{display:none;padding:9px 16px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--gold2);font:600 13px Manrope;cursor:pointer;min-height:40px}
+@media(max-width:820px){
+nav{gap:10px;padding:10px 4vw}
+nav>.btn{margin-left:auto;padding:9px 14px!important;font-size:12.5px;white-space:nowrap}
+.mb{display:inline-block}
+nav div#nl{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:8px 5vw 18px;background:#07080c;border-bottom:1px solid var(--line);box-shadow:0 30px 50px -20px #000}
+nav div#nl.open{display:flex;animation:swap .35s both}
+nav div#nl a{font-size:18px;padding:14px 0;border-bottom:1px solid var(--line);color:var(--ink)}
+section{padding:68px 5vw}
+.head{margin-bottom:30px}
+.nums{margin-top:-28px}
+}
+@media(max-width:600px){
+body{font-size:14.5px}
+.hero{padding:92px 5vw 52px}
+.hero h1{font-size:clamp(36px,11.5vw,56px)}
+.cd{gap:8px}.cd div{min-width:0;flex:1;padding:10px 4px}.cd b{font-size:26px}
+.nums{grid-template-columns:1fr 1fr}.nums div{padding:22px 16px}.nums b{font-size:38px}
+.bar{height:auto;min-height:62px;min-width:calc(50% + var(--w)/2);padding:10px 16px;white-space:normal;gap:10px}
+.bar span{font-size:13px;line-height:1.3}.bar b{font-size:24px;flex:none}
+.card{padding:20px}.card h3{font-size:23px}
+.ph .stat span{font-size:12px}
+.ph h3{font-size:28px!important}
+.tl{padding-left:28px}.tl h3{font-size:21px}
+.pledge{padding:48px 5vw;border-radius:22px}
+.pledge input{font-size:16px;width:100%;margin:6px 0}
+.pledge .btn{width:100%;margin-top:6px}
+.res{grid-template-columns:1fr 1fr}.res b{font-size:24px}
+.ck label{padding:12px 13px}
+#presets .btn{flex:1 1 44%;text-align:center}
+}
+@media(hover:none){.card:hover{transform:none}}
+
+.lg{display:inline-flex;border:1px solid var(--line);border-radius:99px;padding:3px;background:rgba(14,16,24,.6);margin-left:18px}
+.lg button{border:0;background:transparent;color:var(--mute);padding:5px 12px;border-radius:99px;cursor:pointer;font-size:15px;min-height:34px;transition:.3s}
+.lg button.on{background:var(--gold);color:#1a1405}
+.lg [data-l=en]{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:16px}
+.lg [data-l=hi]{font-family:'Tiro Devanagari Hindi',serif}
+.lg [data-l=mr]{font-family:'Tiro Devanagari Marathi',serif}
+html:not([lang=en]) body{font-family:Manrope,Mukta,sans-serif;line-height:1.85}
+html:not([lang=en]) :is(h1,h2,h3){font-weight:400;line-height:1.3}
+html[lang=hi] :is(h1,h2,h3,.bar b,.nums b,.res b,.cd b){font-family:'Cormorant Garamond','Tiro Devanagari Hindi',serif}
+html[lang=mr] :is(h1,h2,h3,.bar b,.nums b,.res b,.cd b){font-family:'Cormorant Garamond','Tiro Devanagari Marathi',serif}
+html:not([lang=en]) .hero h1{font-size:clamp(32px,6.4vw,82px)}
+html:not([lang=en]) .hero h1 em{font-style:normal}
+html:not([lang=en]) :is(.bar span,.res span,.cd span,.nums span,.tabs button,.btn,nav div a){font-family:Mukta,Manrope,sans-serif}
+@media(max-width:820px){.lg{margin-left:auto}nav>.btn{margin-left:0}}
+@media(max-width:600px){nav>.btn{display:none}.lg button{padding:5px 10px}html:not([lang=en]) .hero h1{font-size:clamp(30px,9vw,46px)}}
 </style>
 </head>
 <body>
-<nav><b>MUSICOUL</b><div><a href="#funnel">Mission</a><a href="#roadmap">Roadmap</a><a href="#playbook">Playbook</a><a href="#first90">First 90 days</a><a href="#wankhede">Wankhede plan</a><a href="#calc">Calculator</a></div><a class="btn" href="#pledge" style="padding:9px 20px">Take the pledge</a></nav>
+<i id="sp"></i><nav><b>MUSICOUL</b><div id="nl"><a href="#funnel">Mission</a><a href="#roadmap">Roadmap</a><a href="#playbook">Playbook</a><a href="#first90">First 90 days</a><a href="#wankhede">Wankhede plan</a><a href="#calc">Calculator</a></div><span class="lg" role="group" aria-label="Language"><button data-l="en" class="on">EN</button><button data-l="hi">हिं</button><button data-l="mr">मरा</button></span><a class="btn" href="#pledge" style="padding:9px 20px">Take the pledge</a><button class="mb" id="mb" aria-label="Open menu" aria-expanded="false">Menu</button></nav>
 
 <header class="hero">
 <canvas id="sky"></canvas>
@@ -178,7 +241,7 @@ footer{text-align:center;padding:50px 5vw;color:var(--mute);font-size:13px;borde
 <script>
 /* ---------- Wankhede hero ---------- */
 const cv=document.getElementById('sky'),x=cv.getContext('2d');let W,H,mx=0,crowd=[],perf=[],sparks=[];
-function size(){const r=devicePixelRatio||1;W=cv.clientWidth;H=cv.clientHeight;cv.width=W*r;cv.height=H*r;x.setTransform(r,0,0,r,0,0);build()}
+function size(){const r=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*r;cv.height=H*r;x.setTransform(r,0,0,r,0,0);build()}
 function build(){crowd=[];perf=[];const cx=W/2,cy=H*.74;
 for(let ring=0;ring<7;ring++){const rx=W*(.3+ring*.045),ry=H*(.1+ring*.022),n=70+ring*22;
 for(let i=0;i<n;i++){const a=i/n*6.283;crowd.push({x:cx+Math.cos(a)*rx,y:cy+Math.sin(a)*ry,p:Math.random()*9,r:1+ring*.18})}}
@@ -227,7 +290,7 @@ const P=[
 ['Jan 2028','Deliver the Wankhede celebration','A safe, memorable, student-first event',['Final sign-off','Clear event command','Impact report'],['Hold a final go/no-go review with venue management, authorities, producer, safety leads and Musicoul leadership.','Verify manifests, guardian contacts, transport, accommodation, accessibility, meals and medical support.','Use the approved schedule, access controls, stage management, crowd plan and emergency procedures.','Run sound checks and rehearsals under qualified production professionals.','Capture media only with participant permission and a clear privacy policy.','Afterwards, reconcile finances, thank students and partners, publish an impact report and record lessons learned.']]];
 let cur=0;const tabs=document.getElementById('tabs'),ph=document.getElementById('phase');
 function showPhase(i){cur=i;tabs.innerHTML=P.map((p,j)=>`<button class="${j==i?'act':''}" onclick="showPhase(${j})">${p[0]}</button>`).join('');const p=P[i];
-ph.innerHTML=`<div class="fade"><h3 style="font-size:34px">${p[1]}</h3><div class="stat"><span>${p[2]}</span>${p[3].map(m=>`<span>${m}</span>`).join('')}</div><p class="note" style="margin-top:16px">Gate review: do not start the next stage until this one has an owner, a budget, measurable evidence and written risks.</p></div><ul class="chk fade">${p[4].map(d=>`<li>${d}</li>`).join('')}</ul>`}
+ph.innerHTML=`<div class="fade"><h3 style="font-size:34px">${p[1]}</h3><div class="stat"><span>${p[2]}</span>${p[3].map(m=>`<span>${m}</span>`).join('')}</div><p class="note" style="margin-top:16px">Gate review: do not start the next stage until this one has an owner, a budget, measurable evidence and written risks.</p></div><ul class="chk fade">${p[4].map(d=>`<li>${d}</li>`).join('')}</ul>`;window.LR&&(L(tabs),L(ph))}
 showPhase(0);
 
 /* ---------- playbook ---------- */
@@ -253,27 +316,75 @@ const WK=[['Venue and permissions','Approach the Mumbai Cricket Association and 
 document.getElementById('ws').innerHTML=WK.map(w=>`<div class="card"><h3>${w[0]}</h3><p style="color:#c6cad6;font-size:14px">${w[1]}</p></div>`).join('');
 
 /* ---------- calculator ---------- */
-const F=[['br','Branches',1,300,5],['st','Students per branch',5,300,20],['fe','Monthly fee per student (₹)',500,10000,2000,250],['rt','Rent per branch per month (₹)',0,100000,15000,2500],['sp','Teacher share (%)',50,90,70,5]];
-document.getElementById('ctl').innerHTML=F.map(f=>`<label>${f[1]}<b id="v${f[0]}"></b></label><input type="range" id="${f[0]}" min="${f[2]}" max="${f[3]}" step="${f[5]||1}" value="${f[4]}">`).join('');
+const F=[['br','Branches',1,300,5],['st','Students per branch',5,300,20],['fe','Monthly fee per student (₹)',500,10000,2000,250],['rt','Rent per branch per month (₹)',0,100000,15000,2500]];
+document.getElementById('ctl').innerHTML=F.map(f=>`<label>${f[1]}<b id="v${f[0]}"></b></label><input type="range" id="${f[0]}" min="${f[2]}" max="${f[3]}" step="${f[5]||1}" value="${f[4]}">`).join('')+'<p class="note" style="margin-top:22px">Fixed split: 70% to the certified teacher, 30% to Musicoul HQ.</p>';
 const PR=[['Pune today',5,20,2000,15000],['Pune Metro',15,35,2250,18000],['Mumbai hubs',20,60,3000,30000],['36 districts',36,75,2500,20000],['28 capitals',28,150,3000,35000],['10,000 target',200,50,2500,20000]];
 document.getElementById('presets').innerHTML=PR.map((p,i)=>`<button class="btn" style="padding:8px 16px;font-size:13px;background:var(--panel2);color:var(--ink);border:1px solid var(--line)" onclick="pre(${i})">${p[0]}</button>`).join('');
 const $=id=>document.getElementById(id);
-function pre(i){const p=PR[i];['br','st','fe','rt'].forEach((k,j)=>$(k).value=p[j+1]);$('sp').value=70;calc()}
+function pre(i){const p=PR[i];['br','st','fe','rt'].forEach((k,j)=>$(k).value=p[j+1]);calc()}
 const fm=v=>v>=1e7?'₹'+(v/1e7).toFixed(2)+' Cr':v>=1e5?'₹'+(v/1e5).toFixed(2)+' L':'₹'+Math.round(v).toLocaleString('en-IN');
-function calc(){const b=+$('br').value,s=+$('st').value,f=+$('fe').value,r=+$('rt').value,sp=+$('sp').value;
+function calc(){const b=+$('br').value,s=+$('st').value,f=+$('fe').value,r=+$('rt').value,sp=70;
 F.forEach(q=>$('v'+q[0]).textContent=q[0]=='sp'?sp+' / '+(100-sp):(q[0]=='fe'||q[0]=='rt'?'₹'+(+$(q[0]).value).toLocaleString('en-IN'):$(q[0]).value));
 const n=b*s,g=n*f,rent=b*r,net=Math.max(0,g-rent),tp=net*sp/100,hq=net-tp;
-$('res').innerHTML=[['Students',n.toLocaleString('en-IN')],['Gross / month',fm(g)],['Rent',fm(rent)],['Net pool',fm(net)],['Teachers get',fm(tp)],['HQ royalty',fm(hq)]].map(a=>`<div><span>${a[0]}</span><b>${a[1]}</b></div>`).join('');
-$('prog').style.width=Math.min(100,n/100)+'%'}
-['br','st','fe','rt','sp'].forEach(k=>$(k).addEventListener('input',calc));calc();
+$('res').innerHTML=[['Students',n.toLocaleString('en-IN')],['Gross / month',fm(g)],['Rent',fm(rent)],['Net pool',fm(net)],['Teachers get (70%)',fm(tp)],['HQ royalty (30%)',fm(hq)]].map(a=>`<div><span>${a[0]}</span><b>${a[1]}</b></div>`).join('');
+$('prog').style.width=Math.min(100,n/100)+'%';window.LR&&L($('res'))}
+['br','st','fe','rt'].forEach(k=>$(k).addEventListener('input',calc));calc();
 
 /* ---------- pledge ---------- */
 $('pl').onclick=()=>{const v=$('nm').value.trim();if(!v)return;$('bn').textContent=v;$('badge').classList.add('show')};
 const CK=['Days 1–15: Appoint a project lead. Define the mission brief, target cities, decision rights and a weekly dashboard.','Days 1–30: Audit students, teachers, fees, attendance, retention, capacity and operating costs.','Days 15–30: Build a standard branch playbook, teacher onboarding and a learning-quality rubric.','Days 15–45: Set up a CRM, lead-to-enrolment funnel, parent consent records and payment reconciliation.','Days 30–60: Run one repeatable city campaign. Measure trial-to-enrolment conversion and retention.','Days 30–60: Draft the Wankhede concept note and request an official venue discussion. Make no booking claim until it is confirmed in writing.','Days 45–75: Form a student performance committee. Define repertoire, age groups and rehearsal format.','Days 60–90: Build a 12-month budget, sponsorship deck, risk register and go/no-go criteria for each expansion.'];
 let sv={};try{sv=JSON.parse(localStorage.getItem('mc90')||'{}')}catch(e){}
 $('ck').innerHTML=CK.map((c,i)=>`<label><input type="checkbox" data-i="${i}" ${sv[i]?'checked':''}><span>${c}</span></label>`).join('');
-function ck(){const bx=[...document.querySelectorAll('#ck input')];const st={};bx.forEach(b=>st[b.dataset.i]=b.checked);try{localStorage.setItem('mc90',JSON.stringify(st))}catch(e){}const n=bx.filter(b=>b.checked).length;$('ckn').textContent=n+' / '+bx.length+' complete';$('ckb').style.width=(n/bx.length*100)+'%'}
+function ck(){const bx=[...document.querySelectorAll('#ck input')];const st={};bx.forEach(b=>st[b.dataset.i]=b.checked);try{localStorage.setItem('mc90',JSON.stringify(st))}catch(e){}const n=bx.filter(b=>b.checked).length;$('ckn').textContent=n+' / '+bx.length+' '+tx('complete');$('ckb').style.width=(n/bx.length*100)+'%'}
 document.querySelectorAll('#ck input').forEach(b=>b.addEventListener('change',ck));ck();
+const mb=$('mb'),nl=$('nl');
+function menu(o){nl.classList.toggle('open',o);mb.setAttribute('aria-expanded',o);mb.textContent=tx(o?'Close':'Menu')}
+mb.onclick=()=>menu(!nl.classList.contains('open'));
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu(false)));
+addEventListener('keydown',e=>e.key=='Escape'&&menu(false));
+addEventListener('scroll',()=>{const h=document.documentElement;$('sp').style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+'%'},{passive:true});
+const D=[
+['Mission','मिशन','ध्येय'],['Roadmap','रोडमैप','रोडमॅप'],['Playbook','कार्य-पुस्तिका','कृती पुस्तिका'],['First 90 days','पहले 90 दिन','पहिले 90 दिवस'],['Wankhede plan','वानखेड़े योजना','वानखेडे योजना'],['Calculator','कैलकुलेटर','कॅल्क्युलेटर'],['Take the pledge','संकल्प लें','संकल्प करा'],['Menu','मेन्यू','मेनू'],['Close','बंद करें','बंद करा'],
+['10,000 students.','10,000 विद्यार्थी।','10,000 विद्यार्थी.'],['5,000 on the Wankhede field.','वानखेड़े के मैदान पर 5,000।','वानखेडेच्या मैदानावर 5,000.'],
+['Founded by Chandrashekhar Kolhe…','चंद्रशेखर कोल्हे द्वारा 21 जनवरी 2026 को स्थापित। ठीक दो साल बाद हमारा लक्ष्य है वानखेड़े स्टेडियम में 5,000+ म्यूज़िकॉल विद्यार्थियों का एक साथ प्रदर्शन। एक साहसी लक्ष्य, हर क़दम ईमानदारी से।','चंद्रशेखर कोल्हे यांनी 21 जानेवारी 2026 रोजी स्थापन केले. अगदी दोन वर्षांनी वानखेडे स्टेडियमवर 5,000+ म्युझिकॉल विद्यार्थ्यांनी एकत्र सादरीकरण करणे हे आमचे उद्दिष्ट आहे. एक धाडसी ध्येय, प्रामाणिकपणे एकेक पाऊल.'],
+['days','दिन','दिवस'],['hours','घंटे','तास'],['minutes','मिनट','मिनिटे'],['seconds','सेकंड','सेकंद'],
+['See how we get there','देखें हम वहाँ कैसे पहुँचेंगे','आम्ही तिथे कसे पोहोचू ते पाहा'],
+['A vision in development…','एक विकसित होती परिकल्पना: स्थल, तिथि, अनुमतियाँ और अतिथि भागीदारी लिखित पुष्टि के अधीन हैं।','विकसित होत असलेली संकल्पना: स्थळ, तारीख, परवानग्या आणि पाहुण्यांचा सहभाग लेखी पुष्टीच्या अधीन आहेत.'],
+['students enrolled nationwide','देशभर में नामांकित विद्यार्थी','देशभरात नोंदणीकृत विद्यार्थी'],['performers on stage at Wankhede','वानखेड़े के मंच पर कलाकार','वानखेडेच्या मंचावर कलाकार'],['Maharashtra districts covered','महाराष्ट्र के जिले','महाराष्ट्रातील जिल्हे'],['state capital hubs','राज्य राजधानी केंद्र','राज्य राजधानी केंद्रे'],
+['Ten thousand learn. Five thousand perform.','दस हज़ार सीखें। पाँच हज़ार प्रस्तुति दें।','दहा हजार शिकतील. पाच हजार सादरीकरण करतील.'],
+['10,000+ is our enrolment goal…','10,000+ हमारा नामांकन लक्ष्य है। 5,000+ अलग लक्ष्य है: वे विद्यार्थी जो मुंबई आकर भाग लेंगे। चयन निष्पक्ष और पहले से घोषित होगा; भागीदारी कमाई जाती है, नामांकन से मान नहीं ली जाती।','10,000+ हे आमचे नोंदणी उद्दिष्ट आहे. 5,000+ हे वेगळे उद्दिष्ट: मुंबईला येऊन सहभागी होणारे विद्यार्थी. निवड निष्पक्ष आणि आधी जाहीर केलेली असेल; सहभाग कमवावा लागतो, केवळ नोंदणीवरून गृहीत धरला जात नाही.'],
+['Enrolled across India','पूरे भारत में नामांकित','संपूर्ण भारतात नोंदणीकृत'],['Interested and audition-ready (planning figure)','इच्छुक और ऑडिशन के लिए तैयार (योजना अनुमान)','इच्छुक आणि ऑडिशनसाठी तयार (नियोजन अंदाज)'],['Wankhede participation target','वानखेड़े सहभागिता लक्ष्य','वानखेडे सहभाग लक्ष्य'],
+['Swara & pitch','स्वर और सुर-शुद्धता','स्वर आणि सुरेलपणा'],['Laya & ensemble timing','लय और समूह-तालमेल','लय आणि समूह ताळमेळ'],['Stage presence','मंच उपस्थिति','रंगमंचावरील वावर'],
+['The 24-month roadmap','24 महीने का रोडमैप','24 महिन्यांचा रोडमॅप'],['Six milestones…','छह पड़ाव, हर एक अगले का द्वार खोलता है। देखने के लिए किसी तिथि पर टैप करें।','सहा टप्पे, प्रत्येक पुढचा टप्पा खुला करतो. तपशील पाहण्यासाठी तारखेवर टॅप करा.'],
+['Nov–Dec 2026','नव–दिस 2026','नोव्हे–डिसें 2026'],['Jan–Mar 2027','जन–मार्च 2027','जाने–मार्च 2027'],['Apr–Jun 2027','अप्रैल–जून 2027','एप्रिल–जून 2027'],['Jul–Sep 2027','जुलाई–सित 2027','जुलै–सप्टें 2027'],['Oct–Dec 2027','अक्टू–दिस 2027','ऑक्टो–डिसें 2027'],['Jan 2028','जन 2028','जाने 2028'],['Apr–Sep 2027','अप्रैल–सित 2027','एप्रिल–सप्टें 2027'],['Dec 2027–Jan 2028','दिस 2027–जन 2028','डिसें 2027–जाने 2028'],['21 January 2028','21 जनवरी 2028','21 जानेवारी 2028'],
+['Build the foundation','नींव तैयार करें','पाया भक्कम करा'],['Prove the Pune model','पुणे मॉडल सिद्ध करें','पुणे मॉडेल सिद्ध करा'],['Maharashtra expansion','महाराष्ट्र विस्तार','महाराष्ट्र विस्तार'],['National network and repertoire','राष्ट्रीय नेटवर्क और प्रस्तुति-सूची','राष्ट्रीय नेटवर्क आणि सादरीकरण सूची'],['Qualify, rehearse and confirm','चयन, रिहर्सल और पुष्टि','निवड, रिहर्सल आणि निश्चिती'],['Deliver the Wankhede celebration','वानखेड़े उत्सव संपन्न करें','वानखेडे सोहळा पार पाडा'],
+['One reliable operating model','एक भरोसेमंद संचालन मॉडल','एक विश्वासार्ह कार्यपद्धती'],['Repeatable city-level growth','हर शहर में दोहराई जा सकने वाली वृद्धि','प्रत्येक शहरात पुन्हा करता येणारी वाढ'],['Expand district by district','जिला दर जिला विस्तार','जिल्ह्यामागून जिल्हा विस्तार'],['Reach without losing quality','गुणवत्ता खोए बिना विस्तार','दर्जा न गमावता विस्तार'],['Turn interest into a safe participant plan','रुचि को सुरक्षित सहभागिता योजना में बदलें','आवडीचे रूपांतर सुरक्षित सहभाग योजनेत करा'],['A safe, memorable, student-first event','सुरक्षित, यादगार, विद्यार्थी-प्रथम आयोजन','सुरक्षित, संस्मरणीय, विद्यार्थी-प्रथम कार्यक्रम'],
+['Gate review…','गेट समीक्षा: अगला चरण तब तक शुरू न करें जब तक इसका ज़िम्मेदार, बजट, मापने योग्य प्रमाण और लिखित जोखिम तय न हों।','गेट आढावा: या टप्प्याला जबाबदार व्यक्ती, बजेट, मोजता येणारे पुरावे आणि लेखी जोखीम निश्चित होईपर्यंत पुढचा टप्पा सुरू करू नका.'],
+['The playbook: how every piece gets done','कार्य-पुस्तिका: हर काम कैसे पूरा होगा','कृती पुस्तिका: प्रत्येक काम कसे पूर्ण होईल'],['Six workstreams…','छह कार्यधाराएँ साथ चलती हैं। हर एक का एक जवाबदेह प्रमुख हो और प्रगति प्रमाण से परखी जाए।','सहा कार्यधारा एकत्र चालतात. प्रत्येकाला एक जबाबदार प्रमुख द्या आणि प्रगती पुराव्यांनी तपासा.'],
+['Leadership and governance','नेतृत्व और संचालन','नेतृत्व आणि प्रशासन'],['Teaching quality','शिक्षण गुणवत्ता','अध्यापन दर्जा'],['Students and retention','विद्यार्थी और निरंतरता','विद्यार्थी आणि टिकवणूक'],['Digital platform and data','डिजिटल मंच और डेटा','डिजिटल व्यासपीठ आणि डेटा'],['Finance, legal and partners','वित्त, कानून और साझेदार','वित्त, कायदा आणि भागीदार'],['Curriculum and repertoire','पाठ्यक्रम और प्रस्तुति-सूची','अभ्यासक्रम आणि सादरीकरण सूची'],
+['Decide fast, record everything','तेज़ निर्णय, हर बात दर्ज','झटपट निर्णय, सर्व नोंदवा'],['The product is the lesson','असली उत्पाद है पाठ','धडा हेच खरे उत्पादन'],['Grow by earning trust','भरोसा कमाकर आगे बढ़ें','विश्वास कमावून पुढे जा'],['Know where every student is','हर विद्यार्थी की स्थिति जानें','प्रत्येक विद्यार्थी कुठे आहे ते जाणा'],['Protect the mission','मिशन की रक्षा करें','ध्येयाचे रक्षण करा'],['One syllabus, every city','एक पाठ्यक्रम, हर शहर','एक अभ्यासक्रम, प्रत्येक शहर'],
+['The first 90 days: start here','पहले 90 दिन: यहाँ से शुरू करें','पहिले 90 दिवस: येथून सुरू करा'],['Tick items off…','काम पूरा होते ही टिक करें। आपकी प्रगति इसी ब्राउज़र में सुरक्षित रहती है।','काम पूर्ण होताच खूण करा. तुमची प्रगती याच ब्राउझरमध्ये जतन होते.'],['90-day setup progress','90-दिवसीय तैयारी की प्रगति','90 दिवसांच्या तयारीची प्रगती'],['complete','पूर्ण','पूर्ण'],
+['Wankhede action plan','वानखेड़े कार्य योजना','वानखेडे कृती आराखडा'],['A 5,000-participant event…','पाँच हज़ार प्रतिभागियों का आयोजन एक बड़ी लाइव-प्रोडक्शन और जन-सुरक्षा परियोजना है। शुरुआत स्थल-स्वामी और योग्य पेशेवरों से करें; पहुँच, क्षमता या सुरक्षा को कभी मानकर न चलें।','पाच हजार सहभागींचा कार्यक्रम हा मोठा लाइव्ह-निर्मिती आणि सार्वजनिक सुरक्षा प्रकल्प आहे. स्थळ-मालक आणि पात्र व्यावसायिकांपासून सुरुवात करा; प्रवेश, क्षमता किंवा सुरक्षा गृहीत धरू नका.'],
+['Venue and permissions','स्थल और अनुमतियाँ','स्थळ आणि परवानग्या'],['Music and production','संगीत और निर्माण','संगीत आणि निर्मिती'],['Student welfare','विद्यार्थी कल्याण','विद्यार्थी कल्याण'],['Travel and stay','यात्रा और ठहराव','प्रवास आणि निवास'],['Crowd and event safety','भीड़ और आयोजन सुरक्षा','गर्दी आणि कार्यक्रम सुरक्षा'],['Guests and protocol','अतिथि और प्रोटोकॉल','पाहुणे आणि प्रोटोकॉल'],
+['Concept note and first venue enquiry','संकल्पना-पत्र और स्थल पूछताछ','संकल्पना पत्र आणि स्थळ चौकशी'],['Appoint professionals','पेशेवर नियुक्त करें','व्यावसायिकांची नेमणूक'],['Build, prove, then decide','बनाएँ, परखें, फिर निर्णय लें','घडवा, तपासा, मग ठरवा'],['Confirm in writing','लिखित पुष्टि लें','लेखी निश्चिती घ्या'],['Final rehearsals and readiness','अंतिम रिहर्सल और तैयारी','अंतिम रिहर्सल आणि तयारी'],['Perform and report','प्रस्तुति और रिपोर्ट','सादरीकरण आणि अहवाल'],
+['Franchise network calculator','फ्रैंचाइज़ नेटवर्क कैलकुलेटर','फ्रँचायझी नेटवर्क कॅल्क्युलेटर'],['Model how branches…','देखें कि शाखाएँ, विद्यार्थी और फ़ीस मिलकर 10,000 का लक्ष्य कैसे बनाते हैं, और हर प्रमाणित शिक्षक क्या कमाता है।','शाखा, विद्यार्थी आणि शुल्क मिळून 10,000 चे उद्दिष्ट कसे गाठतात आणि प्रत्येक प्रमाणित शिक्षक किती कमावतो ते पाहा.'],
+['Pune today','आज का पुणे','आजचे पुणे'],['Pune Metro','पुणे मेट्रो','पुणे मेट्रो'],['Mumbai hubs','मुंबई केंद्र','मुंबई केंद्रे'],['36 districts','36 जिले','36 जिल्हे'],['28 capitals','28 राजधानियाँ','28 राजधान्या'],['10,000 target','10,000 लक्ष्य','10,000 लक्ष्य'],
+['Branches','शाखाएँ','शाखा'],['Students per branch','प्रति शाखा विद्यार्थी','प्रति शाखा विद्यार्थी'],['Monthly fee per student (₹)','मासिक फ़ीस प्रति विद्यार्थी (₹)','मासिक शुल्क प्रति विद्यार्थी (₹)'],['Rent per branch per month (₹)','प्रति शाखा मासिक किराया (₹)','प्रति शाखा मासिक भाडे (₹)'],['Teacher share (%)','शिक्षक हिस्सा (%)','शिक्षक वाटा (%)'],
+['Students','विद्यार्थी','विद्यार्थी'],['Gross / month','कुल / माह','एकूण / महिना'],['Rent','किराया','भाडे'],['Net pool','शुद्ध राशि','निव्वळ रक्कम'],['Teachers get (70%)','शिक्षकों को (70%)','शिक्षकांना (70%)'],['HQ royalty (30%)','मुख्यालय रॉयल्टी (30%)','मुख्यालय रॉयल्टी (30%)'],['Fixed split: 70% to the certified teacher, 30% to Musicoul HQ.','निश्चित बँटवारा: 70% प्रमाणित शिक्षक को, 30% म्यूज़िकॉल मुख्यालय को।','निश्चित वाटणी: 70% प्रमाणित शिक्षकाला, 30% म्युझिकॉल मुख्यालयाला.'],['Progress toward 10,000 students','10,000 विद्यार्थियों की ओर प्रगति','10,000 विद्यार्थ्यांकडे प्रगती'],
+['Help us earn the right to stand on that stage.','उस मंच पर खड़े होने का हक़ कमाने में हमारी मदद करें।','त्या मंचावर उभे राहण्याचा हक्क मिळवण्यात आम्हाला साथ द्या.'],['This is not a promise…','यह इस बात का वादा नहीं कि आयोजन पक्का हो चुका है। यह साथ मिलकर उत्कृष्ट शिक्षण, भरोसा और ज़िम्मेदार तैयारी का संकल्प है।','कार्यक्रम निश्चित झाल्याचे हे वचन नाही. उत्कृष्ट अध्यापन, विश्वास आणि जबाबदार तयारी यांसाठी एकत्र केलेला हा संकल्प आहे.'],
+['Join the mission','मिशन से जुड़ें','ध्येयात सामील व्हा'],['Your entry shows…','आपकी प्रविष्टि केवल इसी ब्राउज़र में दिखती है। यह म्यूज़िकॉल को भेजी नहीं जाती।','तुमची नोंद फक्त याच ब्राउझरमध्ये दिसते. ती म्युझिकॉलला पाठवली जात नाही.'],['Musicoul mission member','म्यूज़िकॉल मिशन सदस्य','म्युझिकॉल ध्येय सदस्य'],['Committed to the Wankhede mission, 2028','वानखेड़े मिशन 2028 के प्रति संकल्पित','वानखेडे ध्येय 2028 साठी वचनबद्ध'],['Your name or branch code','आपका नाम या शाखा कोड','तुमचे नाव किंवा शाखा कोड'],
+['Musicoul Classes · Founded by Chandrashekhar Kolhe · 21 January 2026','म्यूज़िकॉल क्लासेस · संस्थापक चंद्रशेखर कोल्हे · 21 जनवरी 2026','म्युझिकॉल क्लासेस · संस्थापक चंद्रशेखर कोल्हे · 21 जानेवारी 2026'],['Target: 10,000+ enrolled, 5,000+ at Wankhede Stadium, 21 January 2028','लक्ष्य: 10,000+ नामांकित, वानखेड़े स्टेडियम में 5,000+, 21 जनवरी 2028','उद्दिष्ट: 10,000+ नोंदणीकृत, वानखेडे स्टेडियमवर 5,000+, 21 जानेवारी 2028'],['The venue, date, capacity…','स्थल, तिथि, क्षमता, अतिथि उपस्थिति और सभी अनुमतियाँ संबंधित अधिकारियों की लिखित पुष्टि के अधीन हैं।','स्थळ, तारीख, क्षमता, पाहुण्यांची उपस्थिती आणि सर्व परवानग्या संबंधित प्राधिकरणांच्या लेखी पुष्टीच्या अधीन आहेत.']];
+const IX={en:0,hi:1,mr:2},M={},PRE=[];
+D.forEach(r=>r[0].endsWith('…')?PRE.push([r[0].slice(0,-1),r]):M[r[0]]=r);
+let lang='en';try{lang=localStorage.getItem('mcl')||'en'}catch(e){}
+if(!(lang in IX))lang='en';
+const OG=new WeakMap();
+function tx(k){if(!window.LR)return k;const r=M[k];return r?r[IX[lang]]:k}
+function fnd(k){return M[k]||(PRE.find(p=>k.startsWith(p[0]))||[])[1]}
+function L(root){const w=document.createTreeWalker(root||document.body,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const pn=n.parentNode.nodeName;if(pn=='SCRIPT'||pn=='STYLE')continue;let o=OG.get(n);if(o===undefined){o=n.nodeValue;OG.set(n,o)}const k=o.trim();if(!k)continue;const r=fnd(k);if(r)n.nodeValue=o.replace(k,()=>r[IX[lang]])}$('nm').placeholder=tx('Your name or branch code')}
+function setLang(l){lang=l;try{localStorage.setItem('mcl',l)}catch(e){}document.documentElement.lang=l;document.querySelectorAll('.lg button').forEach(b=>{const on=b.dataset.l==l;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});L();ck();tick()}
+document.querySelectorAll('.lg button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+window.LR=true;setLang(lang);
 watch();
 </script>
 </body>
